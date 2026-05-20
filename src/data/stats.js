@@ -1,18 +1,27 @@
 export const STATS = [
+
   {
-    num: "20+",
+    value: 20,
+    suffix: "+",
     label: "Years of Excellence",
   },
+
   {
-    num: "5",
+    value: 5,
+    suffix: "",
     label: "Locations",
   },
+
   {
-    num: "500+",
+    value: 500,
+    suffix: "+",
     label: "Enterprise Clients",
   },
+
   {
-    num: "24x7",
+    value: 24,
+    suffix: "x7",
     label: "Support Services",
   },
+
 ];

@@ -8,10 +8,10 @@ export default function Stats() {
       <div className="stats-inner">
 
         {STATS.map((stat) => (
-          <StatCard
-            key={stat.label}
-            {...stat}
-          />
+        <StatCard
+  key={stat.label}
+  {...stat}
+/>
         ))}
 
       </div>
