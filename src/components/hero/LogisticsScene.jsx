@@ -1,50 +1,137 @@
-import yard from "../../assets/yard.png";
-import rail from "../../assets/rail.png";
+import { useEffect } from "react";
+
+import gsap from "gsap";
+
+import truck from "../../assets/truck.svg";
 
 export default function LogisticsScene() {
 
+  useEffect(() => {
+
+    // TRUCK MOTION
+
+    gsap.to(".truck-object", {
+
+      x: -700,
+
+      duration: 12,
+
+      repeat: -1,
+
+      repeatDelay: 1,
+
+      ease: "power1.inOut",
+    });
+
+    // FLOATING INFO CARDS
+
+    gsap.to(".info-card", {
+
+      y: -12,
+
+      duration: 2.5,
+
+      stagger: 0.3,
+
+      repeat: -1,
+
+      yoyo: true,
+
+      ease: "sine.inOut",
+    });
+
+    // ACTIVE NODES
+
+    gsap.to(".infra-node", {
+
+      scale: 1.4,
+
+      opacity: 0.4,
+
+      duration: 1.6,
+
+      stagger: 0.4,
+
+      repeat: -1,
+
+      yoyo: true,
+
+      ease: "power1.inOut",
+    });
+
+  }, []);
+
   return (
+
     <div className="logistics-scene">
 
-      {/* BACKGROUND YARD */}
+      {/* ROAD */}
+
+      <div className="entry-road"></div>
+
+      {/* TRUCK */}
+
       <img
-        src={yard}
+        src={truck}
         alt=""
-        className="yard-scene"
+        className="truck-object"
       />
 
-      {/* RAIL SYSTEM */}
-      <img
-        src={rail}
-        alt=""
-        className="rail-scene"
-      />
+      {/* INFRASTRUCTURE NODES */}
 
-      {/* OCR SCAN AREA */}
-      <div className="ocr-pulse"></div>
+      <div className="infra-node node-1"></div>
+      <div className="infra-node node-2"></div>
+      <div className="infra-node node-3"></div>
 
-      {/* SVG MOTION LAYER */}
-      <svg
-        className="motion-layer"
-        viewBox="0 0 1200 800"
-      >
+      {/* INFO CARDS */}
 
-        {/* MAIN ROUTE */}
-        <path
-          id="main-route"
-          className="motion-route"
-          d="
-            M 640 500
-            C 720 430,
-              840 360,
-              980 290
-          "
-        />
+      <div className="info-card card-1">
 
-      </svg>
+        <span className="card-label">
+          OCR DETECTED
+        </span>
 
-      {/* MOVING LOGISTICS DOT */}
-      <div className="logistics-dot"></div>
+        <h4>
+          WDG4G 49245
+        </h4>
+
+        <p>
+          Confidence 98.7%
+        </p>
+
+      </div>
+
+      <div className="info-card card-2">
+
+        <span className="card-label">
+          GPS ACTIVE
+        </span>
+
+        <h4>
+          Container #C2981
+        </h4>
+
+        <p>
+          Route Updated
+        </p>
+
+      </div>
+
+      <div className="info-card card-3">
+
+        <span className="card-label">
+          GATE STATUS
+        </span>
+
+        <h4>
+          Access Granted
+        </h4>
+
+        <p>
+          Vehicle Verified
+        </p>
+
+      </div>
 
     </div>
   );

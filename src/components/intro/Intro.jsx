@@ -7,43 +7,45 @@ export default function Intro() {
 
   const introRef = useRef(null);
 
-  useEffect(() => {
+useEffect(() => {
 
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    const elements =
-      introRef.current.querySelectorAll(
-        ".intro-animate"
-      );
-
-    gsap.fromTo(
-      elements,
-
-      {
-        opacity: 0,
-        y: 80,
-      },
-
-      {
-        opacity: 1,
-        y: 0,
-
-        duration: 1.2,
-
-        stagger: 0.2,
-
-        ease: "power3.out",
-
-        scrollTrigger: {
-          trigger: introRef.current,
-
-          start: "top 75%",
-        },
-      }
+  const elements =
+    introRef.current.querySelectorAll(
+      ".intro-animate"
     );
 
-  }, []);
+  gsap.fromTo(
+    elements,
 
+    {
+      opacity: 0,
+      y: 120,
+    },
+
+    {
+      opacity: 1,
+      y: 0,
+
+      stagger: 0.15,
+
+      ease: "power3.out",
+
+      scrollTrigger: {
+
+        trigger: introRef.current,
+
+        start: "top 90%",
+
+        end: "top 50%",
+
+        scrub: 1,
+      },
+    }
+  );
+
+}, []);
   return (
     <section
       className="section"
@@ -73,7 +75,7 @@ export default function Intro() {
 
         <p
           className="section-desc intro-animate"
-          style={{ marginTop: "20px" }}
+          style={{ marginTop: "10px" }}
         >
           We help mid to large-sized organisations across India
           unlock the full potential of their technology investments,

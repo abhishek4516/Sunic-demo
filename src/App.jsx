@@ -7,6 +7,7 @@ import Services from "./components/services/Services";
 import Solutions from "./components/solutions/Solutions";
 import ContactCTA from "./components/contact/ContactCTA";
 import Footer from "./components/layout/Footer";
+import TrainDemo from "./components/trainDemo/TrainDemo";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Intro />
       <Stats />
       <About />
+      <TrainDemo />
       <Services />
       <Solutions />
       <ContactCTA />
