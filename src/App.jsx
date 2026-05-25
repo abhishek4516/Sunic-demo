@@ -7,17 +7,20 @@ import Services from "./components/services/Services";
 import Solutions from "./components/solutions/Solutions";
 import ContactCTA from "./components/contact/ContactCTA";
 import Footer from "./components/layout/Footer";
-import TrainDemo from "./components/trainDemo/TrainDemo";
+import WhatWeDo from "./components/WhatWeDo/WhatWeDo";
+// import TrainDemo from "./components/trainDemo/TrainDemo";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Hero />
+     
       <Intro />
+       <WhatWeDo />
       <Stats />
       <About />
-      <TrainDemo />
+      {/* <TrainDemo /> */}
       <Services />
       <Solutions />
       <ContactCTA />

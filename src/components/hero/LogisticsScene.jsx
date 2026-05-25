@@ -1,63 +1,163 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 
-import truck from "../../assets/truck.svg";
+import crane from "../../assets/crane.png";
+
+// import gate from "../../assets/ingate.svg";
+
+import engine from "../../assets/trainEngine.png";
+
+import wagon1 from "../../assets/train2.png";
+import wagon2 from "../../assets/train3.png";
+import wagon3 from "../../assets/train4.png";
+
+// import truck from "../../assets/truck.png";
 
 export default function LogisticsScene() {
 
+  const trainRef = useRef(null);
+
+  const truckRef = useRef(null);
+
+  const glowRef = useRef(null);
+
   useEffect(() => {
 
-    // TRUCK MOTION
+    /* TRAIN TIMELINE */
 
-    gsap.to(".truck-object", {
-
-      x: -700,
-
-      duration: 12,
-
+    const trainTimeline = gsap.timeline({
       repeat: -1,
-
-      repeatDelay: 1,
-
-      ease: "power1.inOut",
     });
 
-    // FLOATING INFO CARDS
+    trainTimeline
 
-    gsap.to(".info-card", {
+      .to(
+        trainRef.current,
+        {
+          x: -340,
+          y: 160,
+          duration: 12,
+          ease: "power2.inOut",
+        }
+      )
 
-      y: -12,
+      .to(
+        trainRef.current,
+        {
+          x: -420,
+          y: 200,
+          opacity: 0,
+          scale: 0.93,
+          duration: 1.2,
+          ease: "power2.in",
+        },
+        "+=0.6"
+      )
 
-      duration: 2.5,
+      .set(
+        trainRef.current,
+        {
+          x: 0,
+          y: 0,
+          opacity: 0,
+          scale: 0.96,
+        }
+      )
 
-      stagger: 0.3,
+      .to(
+        trainRef.current,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.4,
+          ease: "power2.inOut",
+        }
+      )
 
+      .to(
+        {},
+        {
+          duration: 1.2,
+        }
+      );
+
+    /* TRUCK TIMELINE */
+
+    const truckTimeline = gsap.timeline({
       repeat: -1,
-
-      yoyo: true,
-
-      ease: "sine.inOut",
+      delay: 3,
     });
 
-    // ACTIVE NODES
+    truckTimeline
 
-    gsap.to(".infra-node", {
+      .to(
+        truckRef.current,
+        {
+          x: -240,
+          y: -120,
+          duration: 8,
+          ease: "power2.inOut",
+        }
+      )
 
-      scale: 1.4,
+      .to(
+        {},
+        {
+          duration: 1.2,
+        }
+      )
 
-      opacity: 0.4,
+      .to(
+        truckRef.current,
+        {
+          opacity: 0,
+          scale: 0.94,
+          duration: 1,
+          ease: "power2.in",
+        }
+      )
 
-      duration: 1.6,
+      .set(
+        truckRef.current,
+        {
+          x: 0,
+          y: 0,
+          opacity: 0,
+          scale: 0.96,
+        }
+      )
 
-      stagger: 0.4,
+      .to(
+        truckRef.current,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out",
+        }
+      )
 
-      repeat: -1,
+      .to(
+        {},
+        {
+          duration: 1.4,
+        }
+      );
 
-      yoyo: true,
+    /* CRANE GLOW */
 
-      ease: "power1.inOut",
-    });
+    gsap.to(
+      glowRef.current,
+      {
+        opacity: 1,
+        scale: 1.12,
+        duration: 1.6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      }
+    );
 
   }, []);
 
@@ -65,73 +165,70 @@ export default function LogisticsScene() {
 
     <div className="logistics-scene">
 
-      {/* ROAD */}
+      {/* GLOW */}
 
-      <div className="entry-road"></div>
+      <div
+        ref={glowRef}
+        className="crane-glow"
+      ></div>
+
+      {/* CRANE */}
+
+      <img
+        src={crane}
+        alt=""
+        className="crane-object"
+      />
+
+      {/* GATE */}
+
+      {/* <img
+        src={gate}
+        alt=""
+        className="gate-object"
+      /> */}
+
+      {/* TRAIN */}
+
+      <div
+        ref={trainRef}
+        className="train-group"
+      >
+
+        <img
+          src={engine}
+          alt=""
+          className="train-engine"
+        />
+
+        <img
+          src={wagon1}
+          alt=""
+          className="train-wagon1"
+        />
+
+        <img
+          src={wagon2}
+          alt=""
+          className="train-wagon2"
+        />
+
+        <img
+          src={wagon3}
+          alt=""
+          className="train-wagon3"
+        />
+
+      </div>
 
       {/* TRUCK */}
 
-      <img
+      {/* <img
+        ref={truckRef}
         src={truck}
         alt=""
-        className="truck-object"
-      />
-
-      {/* INFRASTRUCTURE NODES */}
-
-      <div className="infra-node node-1"></div>
-      <div className="infra-node node-2"></div>
-      <div className="infra-node node-3"></div>
-
-      {/* INFO CARDS */}
-
-      <div className="info-card card-1">
-
-        <span className="card-label">
-          OCR DETECTED
-        </span>
-
-        <h4>
-          WDG4G 49245
-        </h4>
-
-        <p>
-          Confidence 98.7%
-        </p>
-
-      </div>
-
-      <div className="info-card card-2">
-
-        <span className="card-label">
-          GPS ACTIVE
-        </span>
-
-        <h4>
-          Container #C2981
-        </h4>
-
-        <p>
-          Route Updated
-        </p>
-
-      </div>
-
-      <div className="info-card card-3">
-
-        <span className="card-label">
-          GATE STATUS
-        </span>
-
-        <h4>
-          Access Granted
-        </h4>
-
-        <p>
-          Vehicle Verified
-        </p>
-
-      </div>
+        className="hero-truck"
+      /> */}
 
     </div>
   );
