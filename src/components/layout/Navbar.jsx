@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import logo from "../../assets/sunic_logo.png";
 
+import "./Navbar.css";
+
 export default function Navbar() {
 
   const [scrolled, setScrolled] =
@@ -34,13 +36,12 @@ export default function Navbar() {
       }`}
     >
 
-      {/* LOGO */}
-     <a
-  className={`nav-logo ${
-    scrolled ? "hidden-nav-item" : ""
-  }`}
-  href="/"
->
+      {/* LEFT */}
+
+      <a
+        className="nav-logo"
+        href="/"
+      >
 
         <img
           src={logo}
@@ -48,47 +49,50 @@ export default function Navbar() {
           className="nav-logo-img"
         />
 
-        <span className="logo-text">
-          Sunic Technologies
-        </span>
+        <div className="nav-logo-text-wrap">
+
+          <span className="logo-text">
+            Sunic Technologies
+          </span>
+
+          <span className="logo-sub">
+            Enterprise Infrastructure
+          </span>
+
+        </div>
 
       </a>
 
-      {/* CENTER GLASS NAV */}
-      <div className="nav-center">
+      {/* CENTER LINKS */}
 
-        <ul className="nav-links">
+      <ul className="nav-links">
 
-          {[
-            "About",
-            "Services",
-            "Solutions",
-            "Contact",
-          ].map((item) => (
+        {[
+          "About",
+          "Services",
+          "Solutions",
+          "Contact",
+        ].map((item) => (
 
-            <li key={item}>
+          <li key={item}>
 
-              <a
-                href={`#${item.toLowerCase()}`}
-              >
-                {item}
-              </a>
+            <a
+              href={`#${item.toLowerCase()}`}
+            >
+              {item}
+            </a>
 
-            </li>
+          </li>
+        ))}
 
-          ))}
+      </ul>
 
-        </ul>
+      {/* RIGHT CTA */}
 
-      </div>
-
-   
-  <a
-  className={`nav-cta ${
-    scrolled ? "hidden-nav-item" : ""
-  }`}
-  href="#contact"
->
+      <a
+        className="nav-cta"
+        href="#contact"
+      >
         Talk to Experts
       </a>
 

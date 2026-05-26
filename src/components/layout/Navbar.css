@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
+.nav {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 24px 70px;
+
+  transition:
+    background 0.35s ease,
+    padding 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+
+  background: transparent;
+
+  border-bottom:
+    1px solid transparent;
+}
+
+/* SCROLLED */
+
+.nav.scrolled {
+
+  background:
+    rgba(255,255,255,0.96);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+
+  border-bottom:
+    1px solid rgba(0,0,0,0.06);
+
+  padding: 16px 70px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* LOGO */
+
+.nav-logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  text-decoration: none;
+
+  z-index: 5;
+}
+
+.nav-logo-img {
+
+  width: 72px;
+
+  height: 72px;
+
+  object-fit: contain;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.nav.scrolled .nav-logo-img {
+
+  transform: scale(0.9);
+}
+
+/* TEXT */
+
+.nav-logo-text-wrap {
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.logo-text {
+
+  font-family: "Sora", sans-serif;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+
+  line-height: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f5d0d0 22%,
+      #ff6b6b 48%,
+      #ff3d3d 72%,
+      #ffffff 100%
+    );
+
+  background-size: 200% 200%;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    logoGradientMove 8s ease infinite;
+
+  transition:
+    opacity 0.35s ease;
+}
+@keyframes logoGradientMove {
+
+  0% {
+
+    background-position: 0% 50%;
+  }
+
+  50% {
+
+    background-position: 100% 50%;
+  }
+
+  100% {
+
+    background-position: 0% 50%;
+  }
+}
+.logo-sub {
+
+  margin-top: 2px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255,255,255,0.52);
+
+  transition:
+    color 0.35s ease;
+}
+
+/* SCROLLED TEXT */
+
+.nav.scrolled .logo-text {
+
+  background:
+    linear-gradient(
+      135deg,
+      #111111,
+      #444444,
+      #d92b2b
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+.nav.scrolled .logo-sub {
+
+  color:
+    rgba(0,0,0,0.45);
+}
+
+/* LINKS */
+
+.nav-links {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 42px;
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+.nav-links a {
+
+  position: relative;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255,255,255,0.72);
+
+  transition:
+    color 0.3s ease;
+}
+
+/* SCROLLED LINKS */
+
+.nav.scrolled .nav-links a {
+
+  color:
+    rgba(0,0,0,0.72);
+}
+
+/* HOVER */
+
+.nav-links a:hover {
+
+  color: white;
+}
+
+.nav.scrolled .nav-links a:hover {
+
+  color: #111;
+}
+
+/* UNDERLINE */
+
+.nav-links a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 100%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff5c5c,
+      #ff8f8f
+    );
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+
+  transform: scaleX(1);
+}
+
+/* CTA */
+
+.nav-cta {
+
+  padding: 14px 26px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4d4d,
+      #d92727
+    );
+
+  box-shadow:
+    0 10px 28px rgba(255,70,70,0.35);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.nav-cta:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 34px rgba(255,70,70,0.45);
+}
+
+/* MOBILE */
+
+@media (max-width: 1100px) {
+
+  .nav {
+
+    padding: 20px 24px;
+  }
+
+  .nav.scrolled {
+
+    padding: 14px 24px;
+  }
+
+  .nav-links {
+
+    display: none;
+  }
+
+  .nav-logo-img {
+
+    width: 58px;
+    height: 58px;
+  }
+
+  .logo-text {
+
+    font-size: 20px;
+  }
+
+  .logo-sub {
+
+    font-size: 10px;
+  }
+
+  .nav-cta {
+
+    padding: 12px 18px;
+
+    font-size: 11px;
+  }
+}
