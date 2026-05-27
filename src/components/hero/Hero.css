@@ -1,0 +1,340 @@
+/* HERO */
+
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  background: #ffffff;
+
+  padding-top: 120px;
+}
+.hero-animate {
+
+  will-change:
+    transform,
+    opacity;
+}
+/* GLOW */
+
+.hero-glow {
+  position: absolute;
+
+  width: 900px;
+
+  height: 900px;
+
+  top: -420px;
+
+  right: -280px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(rgba(201, 74, 74, 0.08), transparent 70%);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/* SVG LINES */
+
+.hero-bg-lines {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 1;
+  
+}
+
+.hero-bg-lines path {
+  vector-effect: non-scaling-stroke;
+}
+
+/* CONTAINER */
+
+.hero-container {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: 0.95fr 1.05fr;
+
+  align-items: center;
+
+  gap: 80px;
+
+  min-height: calc(100vh - 120px);
+}
+
+/* LEFT */
+
+.hero-content {
+  max-width: 760px;
+}
+
+/* BADGE */
+
+.hero-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 34px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  color: #c94a4a;
+
+  font-weight: 600;
+}
+
+/* LINE */
+
+.hero-badge-line {
+
+  display: block;
+
+  width: 34px;
+
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #c94a4a,
+      transparent
+    );
+}
+/* TITLE */
+
+.hero-title {
+  font-family: "Syne", sans-serif;
+
+  font-size: clamp(58px, 6vw, 60px);
+
+  line-height: 0.94;
+
+  letter-spacing: -0.06em;
+
+  color: #151515;
+
+  margin: 0;
+
+  font-weight: 700;
+}
+
+.hero-title strong {
+  display: inline-block;
+
+  margin-top: 12px;
+
+  font-weight: 700;
+
+  background: linear-gradient(120deg, #c94a4a, #ea7b7b);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* SUBTEXT */
+
+.hero-sub {
+  margin-top: 34px;
+
+  max-width: 560px;
+
+  font-size: 17px;
+
+  line-height: 2;
+
+  color: #767676;
+
+  font-weight: 400;
+}
+
+/* BUTTONS */
+
+.hero-actions {
+  margin-top: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+/* PRIMARY */
+
+.btn-primary {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 16px 34px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #c94a4a, #e56e6e);
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 12px 34px rgba(201, 74, 74, 0.22);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 42px rgba(201, 74, 74, 0.28);
+}
+
+/* OUTLINE */
+
+.btn-outline {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 16px 32px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  background: rgba(255, 255, 255, 0.6);
+
+  backdrop-filter: blur(10px);
+
+  color: #222;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: #c94a4a;
+
+  color: #c94a4a;
+
+  transform: translateY(-2px);
+}
+
+/* HERO VISUAL */
+
+.hero-visual {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 760px;
+
+  overflow: visible;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    gap: 80px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-visual {
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-title {
+    font-size: 54px;
+
+    line-height: 1;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+
+    line-height: 1.9;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+  }
+
+  .hero-visual {
+    min-height: 480px;
+  }
+}

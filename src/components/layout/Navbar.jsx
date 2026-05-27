@@ -4,7 +4,9 @@ import logo from "../../assets/sunic_logo.png";
 
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({
+  onContactClick,
+}) {
 
   const [scrolled, setScrolled] =
     useState(false);
@@ -89,12 +91,14 @@ export default function Navbar() {
 
       {/* RIGHT CTA */}
 
-      <a
+      <button
         className="nav-cta"
-        href="#contact"
+        onClick={onContactClick}
       >
+
         Talk to Experts
-      </a>
+
+      </button>
 
     </nav>
   );

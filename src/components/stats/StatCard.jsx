@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function StatCard({
@@ -48,6 +49,7 @@ export default function StatCard({
   }, [value, suffix]);
 
   return (
+
     <div className="stat-item">
 
       <div

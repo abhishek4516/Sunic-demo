@@ -145,8 +145,8 @@ export default function Intro() {
     return () => ctx.revert();
   }, []);
 
-  const titlePlain = "Turning Infrastructure Into";
-  const titleEm    = "Competitive Advantage";
+  const titlePlain = "Turning Infrastructure ";
+  const titleEm    = "Into Competitive Advantage";
   const plainCount = titlePlain.split(" ").length;
 
   return (
@@ -177,6 +177,8 @@ export default function Intro() {
 
       <div className="intro-glow" />
 
+     
+<div className="layout-container">
       <div className="intro-layout">
 
         {/* LEFT */}
@@ -281,6 +283,7 @@ export default function Intro() {
           </div>
         </div>
 
+      </div>
       </div>
     </section>
   );

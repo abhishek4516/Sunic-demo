@@ -1,10 +1,18 @@
 .intro-section {
-  position: relative;
-  padding: 100px 90px;
-  overflow: hidden;
-  background: #ffffff;
+    position: relative;
+    padding: 100px 90px;
+    overflow: hidden;
+    background: #f8f7f5;
+}
+.intro-left {
+
+  order: 2;
 }
 
+.intro-right {
+
+  order: 1;
+}
 /* NOISE TEXTURE */
 .intro-section::before {
   display: none;
@@ -24,11 +32,11 @@
 .intro-layout {
   position: relative;
   z-index: 2;
-  max-width: 1480px;
+
   margin: 0 auto;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
-  gap: 140px;
+  gap: 15%;
   align-items: start;
 }
 
@@ -62,7 +70,7 @@
 
 /* TITLE */
 .section-title {
-  font-size: clamp(22px, 5vw, 72px);
+ font-size: clamp(58px, 6vw, 60px);
   line-height: 0.95;
   letter-spacing: -0.05em;
   color: #1a1a1a;
@@ -88,7 +96,7 @@
 .section-desc {
   max-width: 520px;
   margin-top: 34px;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 2;
   color: #888888;
   font-weight: 400;
@@ -308,7 +316,7 @@
   font-weight: 600;
 }
 
-/* remove the old ::before line since we use a real element now */
+
 .section-label::before {
   display: none;
 }
@@ -343,10 +351,7 @@
 }
 
 
-.intro-layout {
-  position: relative;
-  z-index: 2;
-}
+
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .intro-carousel {

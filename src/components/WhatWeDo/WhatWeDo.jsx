@@ -224,6 +224,7 @@ export default function WhatWeDo() {
 
 </svg>
 
+<div className="layout-container">
       <div className="wwd-inner">
 
         {/* LEFT — sticky */}
@@ -322,7 +323,9 @@ export default function WhatWeDo() {
         </div>
 
       </div>
+      </div>
 
     </section>
+    
   );
 }
