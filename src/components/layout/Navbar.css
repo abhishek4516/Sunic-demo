@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
 
+/* NAVBAR */
+
 .nav {
 
   position: fixed;
@@ -16,7 +18,7 @@
 
   justify-content: space-between;
 
-  padding: 26px 80px;
+  padding: 24px clamp(20px, 5vw, 80px);
 
   transition:
     background 0.35s ease,
@@ -35,7 +37,7 @@
 
 .nav.scrolled {
 
-  padding: 18px 80px;
+  padding: 16px clamp(20px, 5vw, 80px);
 
   background:
     rgba(248,247,245,0.72);
@@ -59,25 +61,29 @@
 
   align-items: center;
 
-  gap: 16px;
+  gap: 14px;
 
   text-decoration: none;
 
   position: relative;
 
-  z-index: 3;
+  z-index: 5;
+
+  min-width: 0;
 }
 
 .nav-logo-img {
 
-  width: 70px;
+  width: clamp(52px, 5vw, 70px);
 
-  height: 70px;
+  height: clamp(52px, 5vw, 70px);
 
   object-fit: contain;
 
   transition:
     transform 0.35s ease;
+
+  flex-shrink: 0;
 }
 
 .nav.scrolled .nav-logo-img {
@@ -92,19 +98,23 @@
   display: flex;
 
   flex-direction: column;
+
+  min-width: 0;
 }
 
 .logo-text {
 
   font-family: "Sora", sans-serif;
 
-  font-size: 25px;
+  font-size: clamp(18px, 2vw, 25px);
 
   font-weight: 700;
 
   line-height: 1;
 
   letter-spacing: -0.04em;
+
+  white-space: nowrap;
 
   background:
     linear-gradient(
@@ -147,16 +157,18 @@
 
   margin-top: 5px;
 
-  font-size: 10px;
+  font-size: clamp(8px, 0.8vw, 10px);
 
   font-weight: 500;
 
-  letter-spacing: 0.26em;
+  letter-spacing: 0.22em;
 
   text-transform: uppercase;
 
   color:
     rgba(20,20,20,0.42);
+
+  white-space: nowrap;
 }
 
 /* LINKS */
@@ -167,7 +179,7 @@
 
   align-items: center;
 
-  gap: 42px;
+  gap: clamp(20px, 3vw, 42px);
 
   list-style: none;
 
@@ -182,11 +194,11 @@
 
   text-decoration: none;
 
-  font-size: 12px;
+  font-size: clamp(11px, 0.8vw, 12px);
 
   font-weight: 600;
 
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
 
   text-transform: uppercase;
 
@@ -195,9 +207,9 @@
 
   transition:
     color 0.3s ease;
-}
 
-/* HOVER */
+  white-space: nowrap;
+}
 
 .nav-links a:hover {
 
@@ -249,23 +261,22 @@
 
   justify-content: center;
 
-  padding: 15px 28px;
+  padding: clamp(12px, 1vw, 15px)
+           clamp(18px, 2vw, 28px);
 
   border-radius: 999px;
-  
+
   border: none;
 
-cursor: pointer;
+  cursor: pointer;
 
-font-family: inherit;
+  font-family: inherit;
 
-  text-decoration: none;
-
-  font-size: 12px;
+  font-size: clamp(10px, 0.8vw, 12px);
 
   font-weight: 700;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 
   text-transform: uppercase;
 
@@ -277,6 +288,8 @@ font-family: inherit;
     );
 
   color: white;
+
+  white-space: nowrap;
 
   box-shadow:
     0 12px 32px rgba(201,74,74,0.22);
@@ -294,18 +307,220 @@ font-family: inherit;
     0 18px 40px rgba(201,74,74,0.28);
 }
 
-/* MOBILE */
+/* ========================= */
+/* HAMBURGER */
+/* ========================= */
 
-@media (max-width: 1100px) {
+.nav-menu-btn {
+
+  display: none;
+
+  width: 46px;
+
+  height: 46px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  position: relative;
+
+  z-index: 10;
+
+  padding: 0;
+}
+
+.nav-menu-btn span {
+
+  position: absolute;
+
+  left: 11px;
+
+  width: 24px;
+
+  height: 1.5px;
+
+  background: #141414;
+
+  border-radius: 999px;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    top 0.3s ease;
+}
+
+.nav-menu-btn span:first-child {
+
+  top: 18px;
+}
+
+.nav-menu-btn span:last-child {
+
+  top: 26px;
+}
+
+/* ACTIVE */
+
+.nav-menu-btn.active span:first-child {
+
+  top: 22px;
+
+  transform: rotate(45deg);
+}
+
+.nav-menu-btn.active span:last-child {
+
+  top: 22px;
+
+  transform: rotate(-45deg);
+}
+
+/* ========================= */
+/* MOBILE MENU */
+/* ========================= */
+
+.mobile-menu {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  background:
+    rgba(248,247,245,0.96);
+
+  backdrop-filter: blur(24px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.mobile-menu.active {
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+.mobile-menu-links {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 34px;
+}
+
+.mobile-menu-links a {
+
+  text-decoration: none;
+
+  font-family: "Sora", sans-serif;
+
+  font-size: clamp(24px, 5vw, 42px);
+
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+
+  color: #141414;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mobile-menu-links a:hover {
+
+  color: #c94a4a;
+
+  transform: translateY(-2px);
+}
+
+/* ========================= */
+/* LARGE TABLETS */
+/* ========================= */
+
+@media (max-width: 1200px) {
+
+  .nav-links {
+
+    gap: 24px;
+  }
+
+  .logo-sub {
+
+    display: none;
+  }
+}
+
+/* ========================= */
+/* TABLETS */
+/* ========================= */
+
+@media (max-width: 992px) {
 
   .nav {
 
-    padding: 20px 24px;
+    padding: 18px 24px;
   }
 
   .nav.scrolled {
 
-    padding: 16px 24px;
+    padding: 14px 24px;
+  }
+
+  .nav-links {
+
+    gap: 18px;
+  }
+
+  .nav-links a {
+
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
+  }
+
+  .nav-cta {
+
+    padding: 12px 18px;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  .nav {
+
+    padding: 16px 18px;
+
+    gap: 14px;
+  }
+
+  .nav.scrolled {
+
+    padding: 12px 18px;
   }
 
   .nav-links {
@@ -313,26 +528,73 @@ font-family: inherit;
     display: none;
   }
 
+  .nav-cta {
+
+    display: none;
+  }
+
+  .nav-menu-btn {
+
+    display: flex;
+  }
+
+  .nav-logo {
+
+    flex: 1;
+  }
+
+  .nav-logo {
+
+    gap: 10px;
+  }
+
   .nav-logo-img {
 
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
 
   .logo-text {
 
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .logo-sub {
 
-    font-size: 9px;
+    display: none;
+  }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media (max-width: 480px) {
+
+  .nav {
+
+    padding: 14px 14px;
   }
 
-  .nav-cta {
+  .nav.scrolled {
 
-    padding: 12px 18px;
+    padding: 10px 14px;
+  }
 
-    font-size: 10px;
+  .logo-text {
+
+    font-size: 15px;
+  }
+
+  .nav-logo-img {
+
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-menu-btn {
+
+    width: 42px;
+    height: 42px;
   }
 }

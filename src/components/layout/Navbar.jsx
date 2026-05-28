@@ -11,6 +11,9 @@ export default function Navbar({
   const [scrolled, setScrolled] =
     useState(false);
 
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
   useEffect(() => {
 
     const handleScroll = () => {
@@ -30,76 +33,164 @@ export default function Navbar({
 
   }, []);
 
+  /* PREVENT BODY SCROLL */
+
+  useEffect(() => {
+
+    if (menuOpen) {
+
+      document.body.style.overflow =
+        "hidden";
+
+    } else {
+
+      document.body.style.overflow =
+        "unset";
+    }
+
+    return () => {
+
+      document.body.style.overflow =
+        "unset";
+    };
+
+  }, [menuOpen]);
+
+  const navItems = [
+    "About",
+    "Services",
+    "Solutions",
+    "Contact",
+  ];
+
   return (
 
-    <nav
-      className={`nav ${
-        scrolled ? "scrolled" : ""
-      }`}
-    >
+    <>
 
-      {/* LEFT */}
-
-      <a
-        className="nav-logo"
-        href="/"
+      <nav
+        className={`nav ${
+          scrolled ? "scrolled" : ""
+        }`}
       >
 
-        <img
-          src={logo}
-          alt="Sunic Technologies"
-          className="nav-logo-img"
-        />
+        {/* LEFT */}
 
-        <div className="nav-logo-text-wrap">
+        <a
+          className="nav-logo"
+          href="/"
+        >
 
-          <span className="logo-text">
-            Sunic Technologies
-          </span>
+          <img
+            src={logo}
+            alt="Sunic Technologies"
+            className="nav-logo-img"
+          />
 
-          <span className="logo-sub">
-            Enterprise Infrastructure
-          </span>
+          <div className="nav-logo-text-wrap">
 
-        </div>
+            <span className="logo-text">
+              Sunic Technologies
+            </span>
 
-      </a>
+            <span className="logo-sub">
+              Enterprise Infrastructure
+            </span>
 
-      {/* CENTER LINKS */}
+          </div>
 
-      <ul className="nav-links">
+        </a>
 
-        {[
-          "About",
-          "Services",
-          "Solutions",
-          "Contact",
-        ].map((item) => (
+        {/* DESKTOP LINKS */}
 
-          <li key={item}>
+        <ul className="nav-links">
+
+          {navItems.map((item) => (
+
+            <li key={item}>
+
+              <a
+                href={`#${item.toLowerCase()}`}
+              >
+                {item}
+              </a>
+
+            </li>
+          ))}
+
+        </ul>
+
+        {/* CTA */}
+
+        <button
+          className="nav-cta"
+          onClick={onContactClick}
+        >
+
+          Talk to Experts
+
+        </button>
+
+        {/* HAMBURGER */}
+
+        <button
+          className={`nav-menu-btn ${
+            menuOpen ? "active" : ""
+          }`}
+          onClick={() =>
+            setMenuOpen(!menuOpen)
+          }
+          aria-label="Menu"
+        >
+
+          <span></span>
+          <span></span>
+
+        </button>
+
+      </nav>
+
+      {/* MOBILE MENU */}
+
+      <div
+        className={`mobile-menu ${
+          menuOpen ? "active" : ""
+        }`}
+      >
+
+        <div className="mobile-menu-links">
+
+          {navItems.map((item) => (
 
             <a
+              key={item}
               href={`#${item.toLowerCase()}`}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             >
               {item}
             </a>
 
-          </li>
-        ))}
+          ))}
 
-      </ul>
+          <button
+            className="mobile-menu-cta"
+            onClick={() => {
 
-      {/* RIGHT CTA */}
+              setMenuOpen(false);
 
-      <button
-        className="nav-cta"
-        onClick={onContactClick}
-      >
+              onContactClick();
+            }}
+          >
 
-        Talk to Experts
+            Talk to Experts
 
-      </button>
+          </button>
 
-    </nav>
+        </div>
+
+      </div>
+
+    </>
   );
 }
