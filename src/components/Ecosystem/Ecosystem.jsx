@@ -1,39 +1,11 @@
 import "./Ecosystem.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 
+import "swiper/css";
+import "swiper/css/pagination";
 export default function Ecosystem() {
 
-  const nodes = [
-
-    {
-      title: "OCR Intelligence",
-      x: "14%",
-      y: "18%",
-    },
-
-    {
-      title: "Warehouse Systems",
-      x: "72%",
-      y: "20%",
-    },
-
-    {
-      title: "Tracking Network",
-      x: "82%",
-      y: "58%",
-    },
-
-    {
-      title: "Automation",
-      x: "22%",
-      y: "68%",
-    },
-
-    {
-      title: "Analytics",
-      x: "52%",
-      y: "82%",
-    },
-  ];
 
   return (
 
@@ -110,55 +82,119 @@ export default function Ecosystem() {
 
           {/* RIGHT */}
 
-          <div className="eco-right">
+<div className="eco-right">
 
-            {/* CONNECTION SVG */}
+  <Swiper
+    modules={[Autoplay, Pagination]}
+    slidesPerView={1}
+    spaceBetween={24}
+    loop={true}
+    speed={1000}
+    autoplay={{
+      delay: 3500,
+      disableOnInteraction: false,
+    }}
+    pagination={{
+      clickable: true,
+    }}
+    className="eco-swiper"
+  >
 
-            <svg
-              className="eco-connections"
-              viewBox="0 0 1000 1000"
-            >
+    <SwiperSlide>
 
-              <line x1="500" y1="500" x2="180" y2="180" />
-              <line x1="500" y1="500" x2="760" y2="200" />
-              <line x1="500" y1="500" x2="820" y2="600" />
-              <line x1="500" y1="500" x2="240" y2="700" />
-              <line x1="500" y1="500" x2="520" y2="820" />
+      <div className="eco-slide">
 
-            </svg>
+        <img
+          src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1400&q=80"
+          alt="Warehouse"
+        />
 
-            {/* CENTER HUB */}
+        <div className="eco-slide-overlay">
 
-            <div className="eco-core">
+          <h3>Warehouse Intelligence</h3>
 
-              <span>SUNIC</span>
+          <p>
+            Smart warehouse visibility and operational control.
+          </p>
 
-            </div>
+        </div>
 
-            {/* NODES */}
+      </div>
 
-            {nodes.map((node) => (
+    </SwiperSlide>
 
-              <div
-                key={node.title}
-                className="eco-node"
-                style={{
-                  left: node.x,
-                  top: node.y,
-                }}
-              >
+    <SwiperSlide>
 
-                <div className="eco-node-dot"></div>
+      <div className="eco-slide">
 
-                <span>
-                  {node.title}
-                </span>
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80"
+          alt="OCR"
+        />
 
-              </div>
+        <div className="eco-slide-overlay">
 
-            ))}
+          <h3>OCR Intelligence</h3>
 
-          </div>
+          <p>
+            Automated document processing and recognition.
+          </p>
+
+        </div>
+
+      </div>
+
+    </SwiperSlide>
+
+    <SwiperSlide>
+
+      <div className="eco-slide">
+
+        <img
+          src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1400&q=80"
+          alt="Tracking"
+        />
+
+        <div className="eco-slide-overlay">
+
+          <h3>Tracking Systems</h3>
+
+          <p>
+            Real-time visibility across logistics operations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </SwiperSlide>
+
+    <SwiperSlide>
+
+      <div className="eco-slide">
+
+        <img
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+          alt="Analytics"
+        />
+
+        <div className="eco-slide-overlay">
+
+          <h3>Business Analytics</h3>
+
+          <p>
+            Data-driven decision making and reporting.
+          </p>
+
+        </div>
+
+      </div>
+
+    </SwiperSlide>
+
+  </Swiper>
+
+</div>
 
         </div>
 

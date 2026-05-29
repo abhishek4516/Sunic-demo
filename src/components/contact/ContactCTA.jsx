@@ -1,18 +1,8 @@
 import "./ContactCTA.css";
 
-export default function ContactCTA({
-  onContactClick,
-}) {
-
+export default function ContactCTA({ onContactClick }) {
   return (
-
-    <section
-      className="cta-section"
-      id="contact"
-    >
-
-      {/* BG LINES */}
-
+    <section className="cta-section" id="contact">
       <svg
         className="cta-bg-lines"
         viewBox="0 0 1440 900"
@@ -20,13 +10,7 @@ export default function ContactCTA({
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-
-        <g
-          fill="none"
-          stroke="#b64a4a"
-          strokeLinecap="round"
-        >
-
+        <g fill="none" stroke="#b64a4a" strokeLinecap="round">
           <path
             d="M 0,0 C 400,30 1000,60 1440,90"
             strokeWidth="0.7"
@@ -56,39 +40,22 @@ export default function ContactCTA({
             strokeWidth="0.7"
             opacity="0.07"
           />
-
         </g>
-
       </svg>
 
       <div className="layout-container">
-
         <h2 className="cta-title">
-
           Ready to strengthen your
           <br />
-
           <strong>IT infrastructure?</strong>
-
         </h2>
 
-        <p className="cta-sub">
+        <p className="cta-sub">Talk to our experts today.</p>
 
-          Talk to our experts today.
-
-        </p>
-
-        <button
-          className="btn-primary"
-          onClick={onContactClick}
-        >
-
+        <button className="btn-primary" onClick={onContactClick}>
           Contact Us
-
         </button>
-
       </div>
-
     </section>
   );
 }

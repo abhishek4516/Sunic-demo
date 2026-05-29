@@ -22,7 +22,7 @@ import ContactModal from "./components/contact/ContactModal";
 // import About from "./components/about/About";
 // import Services from "./components/services/Services";
 // import Solutions from "./components/solutions/Solutions";
-// import Partners from "./components/partners/Partners";
+// import LogoLoop from "./components/LogoLoop/LogoLoop";
 // import TrainDemo from "./components/trainDemo/TrainDemo";
 
 export default function App() {
@@ -68,7 +68,7 @@ export default function App() {
           }
         />
 
-        {/* <Partners /> */}
+   {/* <LogoLoop />  */}
 
         <Footer />
 

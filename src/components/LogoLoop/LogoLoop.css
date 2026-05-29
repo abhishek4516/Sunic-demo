@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ─── ROOT ─────────────────────────────────────────────── */
+.ll-root {
+  background: #ffffff;
+  padding: 64px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── HEADER ────────────────────────────────────────────── */
+.ll-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1380px;
+  margin: 0 auto 48px;
+  padding: 0 80px;
+}
+
+.ll-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f0e8e8, transparent);
+}
+
+.ll-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c94a4a;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+/* ─── STAGE ─────────────────────────────────────────────── */
+.ll-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* soft edge fade masks */
+.ll-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ll-fade--left {
+  left: 0;
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+}
+
+.ll-fade--right {
+  right: 0;
+  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+}
+
+/* ─── ROW ────────────────────────────────────────────────── */
+.ll-row {
+  overflow: hidden;
+}
+
+/* ─── TRACK (animated strip) ─────────────────────────────── */
+.ll-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+/* forward — left to right */
+.ll-row--fwd .ll-track {
+  animation: ll-scroll-fwd 32s linear infinite;
+}
+
+/* reverse — right to left */
+.ll-row--rev .ll-track {
+  animation: ll-scroll-rev 38s linear infinite;
+}
+
+/* pause on hover */
+.ll-stage:hover .ll-track {
+  animation-play-state: paused;
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────── */
+@keyframes ll-scroll-fwd {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ll-scroll-rev {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ─── ITEM ───────────────────────────────────────────────── */
+.ll-item {
+  flex-shrink: 0;
+}
+
+/* ─── LOGO BOX ───────────────────────────────────────────── */
+.ll-logo-box {
+  height: 72px;
+  min-width: 160px;
+  padding: 0 32px;
+  border-radius: 16px;
+  border: 1px solid #f0e8e8;
+  background: #fdf8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.35s ease,
+    background   0.35s ease,
+    transform    0.35s ease;
+  cursor: default;
+}
+
+.ll-logo-box:hover {
+  border-color: #e8c4c4;
+  background: #fef4f4;
+  transform: translateY(-3px);
+}
+
+/* ─── LOGO PLACEHOLDER TEXT ──────────────────────────────── */
+.ll-logo-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #c94a4a;
+  opacity: 0.55;
+  text-transform: uppercase;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.ll-logo-box:hover .ll-logo-name {
+  opacity: 0.85;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.ll-footer {
+  display: flex;
+  max-width: 1380px;
+  margin: 48px auto 0;
+  padding: 0 80px;
+}
+
+.ll-footer .ll-rule {
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #f0e8e8, transparent);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ll-header {
+    padding: 0 24px;
+    margin-bottom: 36px;
+  }
+
+  .ll-footer {
+    padding: 0 24px;
+    margin-top: 36px;
+  }
+
+  .ll-fade {
+    width: 80px;
+  }
+
+  .ll-logo-box {
+    height: 60px;
+    min-width: 130px;
+    padding: 0 22px;
+    border-radius: 12px;
+  }
+
+  .ll-logo-name {
+    font-size: 13px;
+  }
+
+  .ll-stage {
+    gap: 12px;
+  }
+
+  .ll-track {
+    gap: 14px;
+  }
+}

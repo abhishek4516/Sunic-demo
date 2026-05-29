@@ -317,9 +317,14 @@
 
 @media (max-width: 1440px) {
 
+.hero-container {
+
+   padding: 0 40px;
+  }
   .hero-title {
 
-    font-size: clamp(44px, 4.8vw, 64px);
+    font-size: clamp(44px, 4.8vw, 45px);
+   
   }
 
   .hero-sub {
