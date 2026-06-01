@@ -1,0 +1,399 @@
+/* =========================================================
+   HeroVisual — right-side video panel
+   ========================================================= */
+
+/* ── Root wrapper ── */
+.hv-root {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+
+  /* tall-ish aspect so the card breathes */
+  aspect-ratio: 4 / 3.2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   DECORATIVE RINGS
+   ========================================================= */
+
+.hv-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 74, 74, 0.12);
+  pointer-events: none;
+  animation: hv-spin linear infinite;
+}
+
+.hv-ring--1 {
+  width: 520px;
+  height: 520px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 38s;
+  border-style: dashed;
+  opacity: 0.55;
+}
+
+.hv-ring--2 {
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 22s;
+  animation-direction: reverse;
+  border-color: rgba(201, 74, 74, 0.08);
+}
+
+@keyframes hv-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =========================================================
+   CORNER BRACKETS
+   ========================================================= */
+
+.hv-bracket {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hv-bracket--tl {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid #c94a4a;
+  border-left: 2px solid #c94a4a;
+}
+
+.hv-bracket--br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid #c94a4a;
+  border-right: 2px solid #c94a4a;
+}
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.hv-card {
+  position: relative;
+  width: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0d0d0d;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.18),
+    0 8px 24px rgba(201, 74, 74, 0.10),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  aspect-ratio: 16 / 10;
+  z-index: 2;
+  transform: perspective(1200px) rotateY(-3deg) rotateX(1.5deg);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hv-card:hover {
+  transform: perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.012);
+}
+
+/* inner glow border */
+.hv-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px rgba(201, 74, 74, 0.22);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.hv-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+/* bottom gradient scrim so chips are always readable */
+.hv-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.52) 0%,
+      rgba(0, 0, 0, 0.10) 44%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 20px;
+}
+
+/* =========================================================
+   CHIPS  (floating badges over the video)
+   ========================================================= */
+
+.hv-chip {
+  position: absolute;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* pulsing dot */
+.hv-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: hv-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hv-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0); }
+}
+
+.hv-chip-label {
+  color: rgba(255, 255, 255, 0.90);
+}
+
+/* positions */
+.hv-chip--tl {
+  top: 14px;
+  left: 14px;
+}
+
+.hv-chip--br {
+  bottom: 50px;   /* above controls row */
+  right: 14px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  padding: 8px 13px;
+  border-radius: 14px;
+  display: none; 
+}
+
+.hv-chip-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.hv-chip-sublabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.06em;
+}
+
+/* =========================================================
+   VIDEO CONTROLS
+   ========================================================= */
+
+.hv-controls {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 6;
+  display: none;
+  gap: 8px;
+}
+
+.hv-ctrl-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.hv-ctrl-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.hv-ctrl-btn:hover {
+  background: rgba(201, 74, 74, 0.45);
+  border-color: rgba(201, 74, 74, 0.6);
+  transform: scale(1.1);
+}
+
+.hv-ctrl-btn:focus-visible {
+  outline: 2px solid #c94a4a;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   FLOATING METRIC CARD
+   ========================================================= */
+
+.hv-metric-card {
+  position: absolute;
+  bottom: -18px;
+  left: -6px;
+  z-index: 8;
+
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.10),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+  min-width: 140px;
+  animation: hv-float 4s ease-in-out infinite;
+}
+
+@keyframes hv-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.hv-metric-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c94a4a;
+}
+
+.hv-metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #151515;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.hv-metric-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: #888;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Tablets — card goes below text, layout centres */
+@media (max-width: 1100px) {
+  .hv-root {
+    max-width: 520px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 2.8;
+  }
+
+  .hv-card {
+    transform: none;
+  }
+
+  .hv-card:hover {
+    transform: scale(1.01);
+  }
+
+  .hv-ring--1 {
+    width: 420px;
+    height: 420px;
+  }
+
+  .hv-ring--2 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hv-root {
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .hv-metric-card {
+    bottom: -14px;
+    left: 0;
+    padding: 10px 14px;
+    min-width: 120px;
+  }
+
+  .hv-metric-value {
+    font-size: 18px;
+  }
+
+  .hv-ring--1,
+  .hv-ring--2 {
+    display: none;
+  }
+
+  .hv-chip--br {
+    bottom: 44px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hv-chip-value {
+    font-size: 15px;
+  }
+
+  .hv-card {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  .hv-ctrl-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .hv-ctrl-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}

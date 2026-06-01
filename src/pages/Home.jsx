@@ -5,7 +5,9 @@ import Ecosystem from "../components/Ecosystem/EcoSystem";
 import ContactCTA from "../components/contact/ContactCTA";
 import Footer from "../components/layout/Footer";
 
-export default function Home() {
+export default function Home({
+  onContactClick,
+}) {
 
   return (
 
@@ -14,7 +16,11 @@ export default function Home() {
       <Intro />
       <WhatWeDo />
       <Ecosystem />
-      <ContactCTA />
+
+      <ContactCTA
+        onContactClick={onContactClick}
+      />
+
       <Footer />
     </>
 

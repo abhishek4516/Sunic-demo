@@ -13,12 +13,12 @@ export default function SolutionPage() {
   const { slug } = useParams();
   const solution = solutions[slug];
 
-  const pageRef    = useRef(null);
-  const labelRef   = useRef(null);
-  const titleRef   = useRef(null);
-  const descRef    = useRef(null);
-  const cardsRef   = useRef([]);
-  const ctaRef     = useRef(null);
+  const pageRef       = useRef(null);
+  const labelRef      = useRef(null);
+  const titleRef      = useRef(null);
+  const descRef       = useRef(null);
+  const featuresRef   = useRef([]);
+  const ctaRef        = useRef(null);
 
   useEffect(() => {
     if (!solution) return;
@@ -43,26 +43,26 @@ export default function SolutionPage() {
         "-=0.4"
       );
 
-      /* ── CARDS SCROLL REVEAL ── */
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-        gsap.fromTo(card,
-          { opacity: 0, y: 60, scale: 0.97 },
+      /* ── FEATURE ROWS SCROLL REVEAL ── */
+      featuresRef.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.fromTo(el,
+          { opacity: 0, y: 32 },
           {
-            opacity: 1, y: 0, scale: 1,
-            duration: 0.9,
-            ease: "power3.out",
+            opacity: 1, y: 0,
+            duration: 0.75,
+            ease: "power2.out",
             scrollTrigger: {
-              trigger: card,
-              start: "top 84%",
-              end: "top 52%",
-              scrub: 1,
+              trigger: el,
+              start: "top 86%",
+              once: true,
             },
+            delay: i * 0.05,
           }
         );
       });
 
-      /* ── CTA SCROLL REVEAL ── */
+      /* ── CTA ── */
       if (ctaRef.current) {
         gsap.fromTo(ctaRef.current,
           { opacity: 0, y: 40 },
@@ -94,7 +94,7 @@ export default function SolutionPage() {
           <p className="sp-not-found-desc">
             The solution you're looking for doesn't exist or has been moved.
           </p>
-          <a href="/" className="sp-btn">Back to Home</a>
+          <a href="/" className="sp-btn sp-btn--primary">Back to Home</a>
         </div>
         <Footer />
       </>
@@ -152,31 +152,30 @@ export default function SolutionPage() {
           <div className="sp-divider-line" />
         </div>
 
-        {/* ── BENEFITS ── */}
-        <div className="sp-benefits-section layout-container">
+        {/* ── KEY FEATURES ── */}
+        <div className="sp-features-section layout-container">
 
           <div className="sp-section-header">
-            <span className="sp-section-eyebrow">Key Benefits</span>
+            <span className="sp-section-eyebrow">Key Features</span>
             <h2 className="sp-section-title">
-              What you <em>gain</em>
+              What's <em>included</em>
             </h2>
           </div>
 
-          <div className="sp-grid">
+          <div className="sp-features-list">
             {solution.benefits.map((item, i) => (
               <div
                 key={i}
-                className="sp-card"
-                ref={(el) => (cardsRef.current[i] = el)}
+                className="sp-feature-row"
+                ref={(el) => (featuresRef.current[i] = el)}
               >
-                <div className="sp-card-top">
-                  <span className="sp-card-index">
+                <div className="sp-feature-left">
+                  <span className="sp-feature-index">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="sp-card-dot" />
+                  <span className="sp-feature-tick">—</span>
                 </div>
-                <p className="sp-card-text">{item}</p>
-                <div className="sp-card-arrow">→</div>
+                <p className="sp-feature-text">{item}</p>
               </div>
             ))}
           </div>
@@ -199,8 +198,8 @@ export default function SolutionPage() {
             </h3>
 
             <p className="sp-cta-desc">
-              Talk to our team and get a tailored implementation
-              plan built around your operational environment.
+              Talk to our team and get a tailored implementation plan
+              built around your operational environment.
             </p>
 
             <div className="sp-cta-actions">
