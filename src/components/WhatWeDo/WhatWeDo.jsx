@@ -1,6 +1,9 @@
 import "./WhatWeDo.css";
 
+import { Link } from "react-router-dom";
+
 import { useEffect, useRef } from "react";
+
 
 import gsap from "gsap";
 
@@ -12,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     index: "01",
+    slug: "rake-number-ocr",
     title: "Rake Number OCR",
     tag: "OCR",
     desc:
@@ -19,6 +23,7 @@ const services = [
   },
   {
     index: "02",
+    slug: "container-number-ocr",
     title: "Container Number OCR",
     tag: "OCR",
     desc:
@@ -26,6 +31,7 @@ const services = [
   },
   {
     index: "03",
+    slug: "container-location-ocr",
     title: "Container Location + OCR",
     tag: "OCR · Tracking",
     desc:
@@ -33,6 +39,7 @@ const services = [
   },
   {
     index: "04",
+    slug: "vehicle-number-ocr",
     title: "Vehicle Number OCR",
     tag: "OCR",
     desc:
@@ -40,6 +47,7 @@ const services = [
   },
   {
     index: "05",
+    slug: "face-recognition-extraction",
     title: "Face Recognition & Extraction",
     tag: "AI · Security",
     desc:
@@ -47,6 +55,7 @@ const services = [
   },
   {
     index: "06",
+    slug: "gps-location-of-container",
     title: "GPS Location of Container",
     tag: "GPS · Tracking",
     desc:
@@ -54,6 +63,7 @@ const services = [
   },
   {
     index: "07",
+    slug: "gate-operation-automation",
     title: "Gate Operation Automation",
     tag: "Automation",
     desc:
@@ -61,6 +71,7 @@ const services = [
   },
   {
     index: "08",
+    slug: "warehouse-management",
     title: "Warehouse Management",
     tag: "Warehousing",
     desc:
@@ -68,6 +79,7 @@ const services = [
   },
   {
     index: "09",
+    slug: "custom-infra-setup",
     title: "Custom Infra Setup",
     tag: "Infrastructure",
     desc:
@@ -75,6 +87,7 @@ const services = [
   },
   {
     index: "10",
+    slug: "data-storage-solutions",
     title: "Data Storage Solutions",
     tag: "Infrastructure",
     desc:
@@ -82,6 +95,7 @@ const services = [
   },
   {
     index: "11",
+    slug: "data-centre-solutions",
     title: "Data Centre Solutions",
     tag: "Infrastructure",
     desc:
@@ -290,34 +304,38 @@ export default function WhatWeDo() {
 
         <div className="wwd-grid">
 
-          {services.map((service, index) => (
+          {services.map((service) => (
 
-            <div
-              key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-              className="wwd-card-wrap"
-            >
+           <Link
+  to={`/solutions/${service.slug}`}
+  className="wwd-card"
+>
 
-              <div className="wwd-card">
+  <div className="wwd-card-top">
 
-                <div className="wwd-card-top">
-                  <span className="wwd-idx">{service.index}</span>
-                  <span className="wwd-tag">{service.tag}</span>
-                </div>
+    <span className="wwd-idx">
+      {service.index}
+    </span>
 
-                <h3 className="wwd-title">
-                  {service.title}
-                </h3>
+    <span className="wwd-tag">
+      {service.tag}
+    </span>
 
-                <p className="wwd-text">
-                  {service.desc}
-                </p>
+  </div>
 
-                <div className="wwd-arrow">→</div>
+  <h3 className="wwd-title">
+    {service.title}
+  </h3>
 
-              </div>
+  <p className="wwd-text">
+    {service.desc}
+  </p>
 
-            </div>
+  <div className="wwd-arrow">
+    →
+  </div>
+
+</Link>
           ))}
 
         </div>

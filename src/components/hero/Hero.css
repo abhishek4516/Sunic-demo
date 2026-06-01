@@ -147,7 +147,7 @@
 
 .hero-title {
 
-  font-family: "Nunito", sans-serif;
+  font-family: "manrope", sans-serif;
 
   font-size: clamp(46px, 5vw, 60px);
 
@@ -178,6 +178,7 @@
     );
 
   -webkit-background-clip: text;
+  background-clip: text;
 
   -webkit-text-fill-color: transparent;
 }

@@ -84,7 +84,7 @@
 
 
 .eco-title {
-  font-family: "Nunito", sans-serif;
+  font-family: "manrope", sans-serif;
   
   font-size: clamp(46px, 5vw, 60px);
 
@@ -105,6 +105,7 @@
   background: linear-gradient(120deg, #c94a4a, #ea7b7b);
 
   -webkit-background-clip: text;
+  background-clip: text;
 
   -webkit-text-fill-color: transparent;
 }
@@ -185,7 +186,7 @@
 
   color: white;
 
-  font-family: "Nunito", sans-serif;
+  font-family: "manrope", sans-serif;
 
   font-size: 34px;
 

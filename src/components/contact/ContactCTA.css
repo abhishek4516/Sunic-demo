@@ -84,7 +84,7 @@
 
   margin-bottom: 28px;
 
-  font-family: "Nunito", sans-serif;
+  font-family: "manrope", sans-serif;
 
   font-size: clamp(54px, 6vw, 60px);
 
@@ -100,19 +100,12 @@
 /* HIGHLIGHT */
 
 .cta-title strong {
-
-  font-weight: 700;
-
-  background:
-    linear-gradient(
-      120deg,
-      #c94a4a,
-      #ea7b7b
-    );
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    background: linear-gradient(120deg, #c94a4a, #ea7b7b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-right: 10px;
 }
 
 /* SUBTEXT */

@@ -104,7 +104,10 @@
 
 .logo-text {
 
-  font-family: "Sora", sans-serif;
+  font-family: "manrope", sans-serif;
+   
+    padding-bottom: 5px;
+
 
   font-size: clamp(18px, 2vw, 25px);
 
@@ -128,6 +131,7 @@
   background-size: 200% 200%;
 
   -webkit-background-clip: text;
+  background-clip: text;
 
   -webkit-text-fill-color: transparent;
 
@@ -270,7 +274,7 @@
 
   cursor: pointer;
 
-  font-family: inherit;
+  font-family: "manrope", sans-serif;
 
   font-size: clamp(10px, 0.8vw, 12px);
 
@@ -432,7 +436,7 @@
 
   text-decoration: none;
 
-  font-family: "Sora", sans-serif;
+  font-family: "manrope", sans-serif;
 
   font-size: clamp(24px, 5vw, 42px);
 
