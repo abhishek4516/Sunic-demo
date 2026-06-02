@@ -174,7 +174,7 @@ export default function Ecosystem() {
 
               {/* Dashboard Title */}
               <div className="dashboard-header-text">
-                <span className="dashboard-badge">Live Deployment</span>
+                {/* <span className="dashboard-badge">Live Deployment</span> */}
                 <h3 className="dashboard-name">KYCL Dashboard</h3>
                 <p className="dashboard-subtitle">AI-Powered Real-Time Status & Tracking</p>
               </div>

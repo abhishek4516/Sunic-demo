@@ -279,7 +279,7 @@
   display: block;
 }
 
-.placeholder-overlay {
+/* .placeholder-overlay {
   position: absolute;
   inset: 0;
   display: flex;
@@ -290,16 +290,16 @@
   backdrop-filter: blur(2px);
   text-align: center;
   padding: 20px;
-}
+} */
 
-.dashboard-image-placeholder.placeholder-active .dashboard-preview-img {
+/* .dashboard-image-placeholder.placeholder-active .dashboard-preview-img {
   display: none;
 }
 
 .placeholder-icon {
   font-size: 48px;
   margin-bottom: 12px;
-}
+} */
 
 /* .placeholder-text {
   font-family: "Manrope", sans-serif;
@@ -314,7 +314,6 @@
   color: #8a8a8a;
 }
 
-/* Dashboard Features */
 .dashboard-features {
   display: flex;
   flex-wrap: wrap;
@@ -324,15 +323,15 @@
 }
 
 .feature-tag {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #4a4a4a;
-  background: #f5f0f0;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #4a4a4a;
+    background: #f5f0f0;
+    padding: 6px 8px;
+    border-radius: 20px;
+    font-weight: 500;
 }
 
 .feature-dot {
@@ -342,7 +341,7 @@
   border-radius: 50%;
 }
 
-/* Location & Status */
+
 .dashboard-location-status {
   display: flex;
   justify-content: space-between;
@@ -380,7 +379,7 @@
   border-radius: 50%;
   animation: pulse 1.5s ease infinite;
 }
-/* Partner Logos */
+
 .partner-logo-img {
   height: 48px;
   width: auto;
@@ -401,7 +400,7 @@
   height: 42px;
 }
 
-/* KYCL Dashboard Image */
+
 .dashboard-image-wrapper {
   margin: 0 20px;
   border-radius: 16px;
@@ -421,7 +420,7 @@
   transform: scale(1.02);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .partner-logo-img {
     height: 36px;
@@ -448,7 +447,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Dashboard Footer */
+
 .dashboard-footer-note {
   display: flex;
   align-items: center;

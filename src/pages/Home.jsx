@@ -11,8 +11,9 @@ export default function Home({ onContactClick }) {
       <Hero />
       <Intro />
       <WhatWeDo />
+       <Ecosystem />
       <LogoLoop />
-      <Ecosystem />
+     
 
       <ContactCTA onContactClick={onContactClick} />
 
