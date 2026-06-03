@@ -111,7 +111,7 @@ export default function Ecosystem() {
             <h2 className="eco-heading" ref={titleRef}>
               Powering CONCOR's
               <br />
-              <em>EXIM Operations</em>
+              <em> Operations</em>
             </h2>
 
             <p className="eco-description" ref={descRef}>

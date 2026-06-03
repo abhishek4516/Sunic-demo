@@ -34,15 +34,14 @@ export default function Navbar({ onContactClick }) {
     };
   }, [menuOpen]);
 
-  // Your original nav items
-  const navItems = ["About", "Services", "Solutions", "Contact"];
+  const navItems = ["About", "Solutions", "Services", "Contact"];
 
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <div className="navbar-container">
           
-          {/* LEFT - Navigation Links (YOUR ORIGINAL ITEMS) */}
+      
           <ul className="navbar-links">
             {navItems.map((item) => (
               <li key={item}>
@@ -51,7 +50,6 @@ export default function Navbar({ onContactClick }) {
             ))}
           </ul>
 
-          {/* CENTER - Logo with Progress Pill (THEMED) */}
           <div className="navbar-center">
             <div className={`logo-pill ${scrolled ? "logo-pill-small" : ""}`}>
               <div 
@@ -65,7 +63,7 @@ export default function Navbar({ onContactClick }) {
             </div>
           </div>
 
-          {/* RIGHT - CTA Buttons */}
+      
           <div className="navbar-right">
          
             <button className="navbar-demo" onClick={onContactClick}>

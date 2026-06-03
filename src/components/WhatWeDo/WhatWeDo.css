@@ -1,42 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap');
+
+/* ═══════════════════════════════════════════════════════
+   ROOT  —  no padding-top: GSAP pins the whole viewport
+═══════════════════════════════════════════════════════ */
 .wwd-root {
-  font-family: 'manrope', sans-serif;
+  font-family: 'Manrope', sans-serif;
   background: #ffffff;
-  padding: 100px 80px 100px;
   position: relative;
-  overflow: clip;
+  overflow: clip;   /* clips horizontal card overflow without breaking pin */
 }
 
-/* NOISE OVERLAY */
-.wwd-root::before {
-  display: none;
+/* ── BACKGROUND SVG ── */
+.wwd-bg-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* GLOWS */
-.wwd-glow-a,
-.wwd-glow-b,
-.wwd-glow-c {
-  display: none;
-}
-
-/* LAYOUT */
-.wwd-inner {
-
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 120px;
+/* ═══════════════════════════════════════════════════════
+   PINNED WRAPPER
+   Two-row layout inside the pinned viewport:
+     Row 1 → left panel (shrinks on scroll)
+     Row 2 → full-width card carousel
+═══════════════════════════════════════════════════════ */
+.wwd-pinned-inner {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;           /* exactly one viewport tall when pinned */
+  padding: 72px 80px 0;
+  box-sizing: border-box;
+  overflow: hidden;        /* hide cards that are off-screen left/right */
 }
 
-/* LEFT — truly sticky */
+/* ═══════════════════════════════════════════════════════
+   LEFT PANEL
+═══════════════════════════════════════════════════════ */
 .wwd-left {
-  position: sticky;
-  top: 200px;
-  align-self: start;
-  max-height: calc(100vh - 140px);
+  flex-shrink: 0;
+  padding-bottom: 28px;
 }
 
 /* EYEBROW */
@@ -48,9 +54,8 @@
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: #c94a4a;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
-
 .wwd-eyebrow::before {
   content: '';
   width: 28px;
@@ -58,44 +63,20 @@
   background: #c94a4a;
   opacity: 0.6;
 }
-/* BACKGROUND LINES */
 
-.wwd-bg-lines {
-
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-
-  height: 100%;
-
-  z-index: 1;
-
-  pointer-events: none;
-}
-
-/* KEEP CONTENT ABOVE */
-
-.wwd-inner {
-
-  position: relative;
-      gap: 15%;
-
-  z-index: 2;
-}
- 
 /* HEADING */
+.wwd-heading-wrap {
+  overflow: hidden;
+}
 .wwd-heading {
-  font-family: 'Manrope', sans-serif ;
-  font-size: clamp(36px, 3.2vw, 60px);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(30px, 3.4vw, 56px);
   line-height: 1.05;
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.04em;
-  margin-bottom: 22px;
+  margin: 0 0 14px;
 }
-
 .wwd-heading em {
   font-style: normal;
   background: linear-gradient(120deg, #c94a4a, #e07070);
@@ -106,89 +87,146 @@
 
 /* DESC */
 .wwd-desc {
-  max-width: 400px;
-  color: #888888;
-  line-height: 1.9;
-      font-size: 20px;
-  margin-bottom: 48px;
+  max-width: 560px;
+  color: #888;
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 28px;
 }
 
 /* STATS */
 .wwd-stats {
   display: flex;
   gap: 30px;
-  padding-top: 28px;
+  padding-top: 20px;
   border-top: 1px solid #f0eded;
+  margin-bottom: 24px;
 }
-
 .wwd-stat-num {
-  font-family: 'manrope', sans-serif;
-  font-size: 28px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
   color: #1a1a1a;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
-
-.wwd-stat-num span {
-  color: #c94a4a;
-}
-
+.wwd-stat-num span { color: #c94a4a; }
 .wwd-stat-label {
   font-size: 11px;
-  color: #bbbbbb;
+  color: #bbb;
   letter-spacing: 0.05em;
 }
 
-/* RIGHT — vertical stack */
-.wwd-grid {
+/* ── PROGRESS BAR ── */
+.wwd-progress-bar {
+  height: 2px;
+  width: 260px;
+  background: #f0e8e8;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  opacity: 0;                /* revealed by GSAP onEnter */
+}
+.wwd-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #c94a4a, #e07070);
+  border-radius: 100px;
+}
+
+/* ── SCROLL HINT ── */
+.wwd-scroll-hint {
   display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding-bottom: 80px;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ccb8b8;
+  opacity: 0;                /* revealed by GSAP onEnter */
+}
+.wwd-hint-icon {
+  font-size: 14px;
+  color: #c94a4a;
+  animation: hintSlide 1.6s ease-in-out infinite;
+}
+@keyframes hintSlide {
+  0%,100% { transform: translateX(0);   opacity: 1; }
+  50%      { transform: translateX(7px); opacity: 0.4; }
 }
 
-/* CARD WRAP — GSAP target */
-.wwd-card-wrap {
-  will-change: transform, opacity;
+/* ═══════════════════════════════════════════════════════
+   CARDS AREA  —  fills remaining height, clips overflow
+═══════════════════════════════════════════════════════ */
+.wwd-cards-area {
+  flex: 1;
+  display: flex;
+  align-items: center;        /* vertically centre the cards in the remaining space */
+  /* bleed to page edges so cards slide in/out from sides */
+  margin-left:  -80px;
+  margin-right: -80px;
+  overflow: hidden;           /* THE key rule: clips cards outside the viewport */
+  opacity: 0;                 /* revealed by GSAP onEnter */
+  transform: translateY(40px);/* will be animated to 0 */
 }
 
-/* CARD */
+/* Full-width track container */
+.wwd-track-viewport {
+  width: 100%;
+  position: relative;
+}
+
+/* ── THE SLIDING TRACK ──
+   width: max-content  →  as wide as all cards combined
+   GSAP sets transform: translateX(…) to slide it        */
+.wwd-track {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;                  /* must equal CARD_GAP constant in JSX */
+  padding: 20px 0 40px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARD
+   width must equal CARD_WIDTH constant in JSX (360px)
+═══════════════════════════════════════════════════════ */
 .wwd-card {
   position: relative;
-
-  display: block;
-
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
-
   color: inherit;
-
   cursor: pointer;
-  padding: 36px 40px 56px;
+
+  width: 400px;               /* ← must match CARD_WIDTH in JSX */
+  flex-shrink: 0;
+  height: 280px;              /* fixed height keeps carousel row tidy */
+
+  padding: 34px 34px 52px;
   border-radius: 24px;
   overflow: hidden;
   background: #fdf8f8;
   border: 1px solid #f0e8e8;
-  transition:
-    transform 0.4s ease,
-    border-color 0.4s ease,
-    background 0.4s ease;
+
+  transform-origin: center center;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 }
 
-/* subtle inner shimmer line */
+/* Top shimmer line */
 .wwd-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 40px;
-  right: 40px;
+  top: 0; left: 36px; right: 36px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,74,74,0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201,74,74,0.12), transparent);
 }
 
 .wwd-card:hover {
-  transform: translateY(-7px);
   border-color: #e8c4c4;
   background: #fef4f4;
+  box-shadow: 0 12px 40px rgba(201,74,74,0.09);
 }
 
 /* CARD TOP ROW */
@@ -196,7 +234,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 /* NUMBER */
@@ -221,81 +259,80 @@
 
 /* TITLE */
 .wwd-title {
-  font-family: 'manrope', sans-serif;
-  font-size: 26px;
-  line-height: 1.18;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
   color: #1a1a1a;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 14px;
-  max-width: 440px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
-/* TEXT */
+/* BODY TEXT */
 .wwd-text {
-  max-width: 520px;
-  color: #888888;
-  line-height: 1.85;
-  font-size: 15px;
+  color: #888;
+  line-height: 1.8;
+  font-size: 13.5px;
+  flex: 1;
+  /* clamp text so it never overflows fixed card height */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ARROW */
 .wwd-arrow {
   position: absolute;
-  right: 28px;
-  bottom: 24px;
-  width: 36px;
-  height: 36px;
+  right: 22px;
+  bottom: 20px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 1px solid #f0e0e0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #dbb8b8;
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-
 .wwd-card:hover .wwd-arrow {
   transform: translate(4px, -4px);
   border-color: #c94a4a;
   color: #c94a4a;
 }
 
-/* RESPONSIVE */
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
-  .wwd-inner {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  .wwd-pinned-inner {
+    padding: 56px 40px 0;
   }
-
-  .wwd-left {
-    position: relative;
-    top: unset;
-    max-height: unset;
+  .wwd-cards-area {
+    margin-left: -40px;
+    margin-right: -40px;
   }
 }
 
 @media (max-width: 768px) {
-  .wwd-root {
-    padding: 90px 24px 120px;
+  .wwd-pinned-inner {
+    padding: 44px 24px 0;
   }
-
+  .wwd-heading { font-size: clamp(26px, 7vw, 38px); }
+  .wwd-desc    { font-size: 14px; }
+  .wwd-stats   { gap: 16px; }
+  .wwd-cards-area {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
   .wwd-card {
-    padding: 28px 28px 52px;
+    width: 280px;
+    height: 260px;
+    padding: 26px 24px 48px;
   }
-
-  .wwd-title {
-    font-size: 22px;
-  }
-
-  .wwd-arrow {
-    display: none;
-  }
-
-  .wwd-grid {
-    gap: 20px;
-  }
+  .wwd-title  { font-size: 17px; }
+  .wwd-arrow  { display: none; }
+  .wwd-progress-bar { width: 180px; }
 }

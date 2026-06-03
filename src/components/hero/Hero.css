@@ -224,13 +224,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 25px;
-    border-radius: 25px;
+    padding: 15px 25px !important;
+    border-radius: 25px !important;
     text-decoration: none;
     background: linear-gradient(135deg, #c94a4a, #e77474);
     color: white;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px !important;
+    font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

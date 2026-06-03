@@ -21,7 +21,7 @@ export default function Hero() {
       tl.fromTo(
         badgeRef.current,
         { opacity: 0, x: -14 },
-        { opacity: 1, x: 0, duration: 0.45 }
+        { opacity: 1, x: 0, duration: 0.45 },
       );
 
       /* 2 — Title fades up with slight scale */
@@ -29,7 +29,7 @@ export default function Hero() {
         titleRef.current,
         { yPercent: 115, opacity: 0 },
         { yPercent: 0, opacity: 1, duration: 0.72 },
-        "-=0.1"
+        "-=0.1",
       );
 
       /* 3 — Subtitle fades up with blur */
@@ -43,7 +43,7 @@ export default function Hero() {
           duration: 0.85,
           ease: "power2.out",
         },
-        "-=0.35"
+        "-=0.35",
       );
 
       /* 4 — Buttons fade up */
@@ -57,7 +57,7 @@ export default function Hero() {
           duration: 0.85,
           ease: "power2.out",
         },
-        "-=0.25"
+        "-=0.25",
       );
 
       /* 5 — HeroVisual fades in from right with slight scale */
@@ -65,7 +65,7 @@ export default function Hero() {
         visualRef.current,
         { opacity: 0, x: 40, scale: 0.96 },
         { opacity: 1, x: 0, scale: 1, duration: 1, ease: "power3.out" },
-        "-=0.5"
+        "-=0.5",
       );
     }, heroRef);
 
@@ -83,14 +83,46 @@ export default function Hero() {
         aria-hidden="true"
       >
         <g fill="none" stroke="#c94a4a" strokeLinecap="round">
-          <path d="M 0,0 C 400,30 1000,60 1440,90"    strokeWidth="0.6" opacity="0.10" />
-          <path d="M 0,0 C 380,80 960,150 1440,190"   strokeWidth="0.6" opacity="0.09" />
-          <path d="M 0,0 C 350,130 920,235 1440,290"  strokeWidth="0.6" opacity="0.08" />
-          <path d="M 0,0 C 320,180 875,325 1440,390"  strokeWidth="0.6" opacity="0.07" />
-          <path d="M 0,0 C 290,230 820,410 1440,490"  strokeWidth="0.6" opacity="0.06" />
-          <path d="M 0,0 C 250,280 760,490 1440,590"  strokeWidth="0.6" opacity="0.05" />
-          <path d="M 0,0 C 210,330 680,570 1440,690"  strokeWidth="0.6" opacity="0.04" />
-          <path d="M 0,0 C 160,380 580,650 1320,790"  strokeWidth="0.6" opacity="0.03" />
+          <path
+            d="M 0,0 C 400,30 1000,60 1440,90"
+            strokeWidth="0.6"
+            opacity="0.10"
+          />
+          <path
+            d="M 0,0 C 380,80 960,150 1440,190"
+            strokeWidth="0.6"
+            opacity="0.09"
+          />
+          <path
+            d="M 0,0 C 350,130 920,235 1440,290"
+            strokeWidth="0.6"
+            opacity="0.08"
+          />
+          <path
+            d="M 0,0 C 320,180 875,325 1440,390"
+            strokeWidth="0.6"
+            opacity="0.07"
+          />
+          <path
+            d="M 0,0 C 290,230 820,410 1440,490"
+            strokeWidth="0.6"
+            opacity="0.06"
+          />
+          <path
+            d="M 0,0 C 250,280 760,490 1440,590"
+            strokeWidth="0.6"
+            opacity="0.05"
+          />
+          <path
+            d="M 0,0 C 210,330 680,570 1440,690"
+            strokeWidth="0.6"
+            opacity="0.04"
+          />
+          <path
+            d="M 0,0 C 160,380 580,650 1320,790"
+            strokeWidth="0.6"
+            opacity="0.03"
+          />
         </g>
       </svg>
 
@@ -98,23 +130,24 @@ export default function Hero() {
 
       <div className="layout-container">
         <div className="hero-container">
-
           {/* ── LEFT CONTENT ── */}
           <div className="hero-content">
             <div className="hero-badge" ref={badgeRef}>
               <span className="hero-badge-line" />
-              <span>Enterprise Infrastructure Intelligence</span>
+              <span>Industrial  Intelligence</span>
             </div>
 
             <h1 className="hero-title" ref={titleRef}>
-              Infrastructure Systems
+              Industrial Systems
               <br />
               <strong>Built for Intelligent Operations.</strong>
             </h1>
 
             <p className="hero-sub" ref={subRef}>
-              OCR, automation, tracking and enterprise infrastructure solutions
-              for logistics, warehousing and industrial operations.
+              From container OCR and automatic gates to GPS tracking and
+              warehouse counting. From fiber cabling and load balancing to data
+              center setup and 24x7 support. Sunic delivers everything —
+              automation, networking, storage, and maintenance.
             </p>
 
             <div className="hero-actions" ref={actionsRef}>
@@ -131,7 +164,6 @@ export default function Hero() {
           <div ref={visualRef}>
             <HeroVisual />
           </div>
-
         </div>
       </div>
     </section>
