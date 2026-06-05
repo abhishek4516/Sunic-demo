@@ -27,6 +27,8 @@ const services = [
     title: "Container Location + OCR",
     tag: "OCR · Tracking",
     desc: "Combined spatial positioning and OCR to log exact container location alongside identity — full traceability in one pass.",
+    hasVideo: true,
+    videoUrl: "/141056-776768318.mp4",
   },
   {
     index: "04",
@@ -48,6 +50,8 @@ const services = [
     title: "GPS Location of Container",
     tag: "GPS · Tracking",
     desc: "Real-time GPS tracking of containers across yards and transit routes — full operational visibility at all times.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "07",
@@ -104,6 +108,7 @@ export default function WhatWeDo() {
   const progressBarRef = useRef(null);
   const hintRef = useRef(null);
   const cardsRef = useRef([]);
+  const videoRefs = useRef({});
 
   const handleCardClick = (slug) => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -241,6 +246,10 @@ export default function WhatWeDo() {
           gsap.to(descRef.current, { opacity: 0.35, duration: 0.3 });
           gsap.to(progressBarRef.current, { opacity: 1, duration: 0.4 });
           gsap.to(hintRef.current, { opacity: 1, duration: 0.4 });
+          
+          Object.values(videoRefs.current).forEach(video => {
+            if (video) video.play();
+          });
         },
 
         onLeaveBack: () => {
@@ -255,6 +264,10 @@ export default function WhatWeDo() {
               card.classList.remove('wwd-card-active');
               gsap.to(card, { scale: 1, opacity: 1, duration: 0.3 });
             }
+          });
+          
+          Object.values(videoRefs.current).forEach(video => {
+            if (video) video.pause();
           });
         },
 
@@ -353,7 +366,7 @@ export default function WhatWeDo() {
                   <div
                     key={service.slug}
                     onClick={() => handleCardClick(service.slug)}
-                    className="wwd-card"
+                    className={`wwd-card ${service.hasVideo ? 'wwd-card-has-video' : ''}`}
                     ref={(el) => (cardsRef.current[index] = el)}
                     role="link"
                     tabIndex={0}
@@ -363,17 +376,33 @@ export default function WhatWeDo() {
                       }
                     }}
                   >
+                    {service.hasVideo && (
+                      <>
+                        <video
+                          className="wwd-card-video-bg"
+                          src={service.videoUrl}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          ref={el => videoRefs.current[service.slug] = el}
+                        />
+                        <div className="wwd-card-video-overlay" />
+                      </>
+                    )}
                     <div className="wwd-card-click-overlay" />
                     <div className="wwd-card-index-ring" />
                     
-                    <div className="wwd-card-top">
-                      <span className="wwd-idx">{service.index}</span>
-                      <span className="wwd-tag">{service.tag}</span>
+                    <div className="wwd-card-content">
+                      <div className="wwd-card-top">
+                        <span className="wwd-idx">{service.index}</span>
+                        <span className="wwd-tag">{service.tag}</span>
+                      </div>
+                      <h3 className="wwd-title">{service.title}</h3>
+                      <p className="wwd-text">{service.desc}</p>
+                      <div className="wwd-arrow">→</div>
+                      <div className="wwd-click-hint">View details</div>
                     </div>
-                    <h3 className="wwd-title">{service.title}</h3>
-                    <p className="wwd-text">{service.desc}</p>
-                    <div className="wwd-arrow">→</div>
-                    <div className="wwd-click-hint">View details</div>
                   </div>
                 ))}
               </div>

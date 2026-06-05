@@ -84,7 +84,7 @@ export default function ContactModal({ isOpen, onClose }) {
             <div className="success-icon">✓</div>
             <div className="success-content">
               <h4>Message Sent Successfully!</h4>
-              <p>We'll get back to you within 24 hours.</p>
+              <p>We'll get back to you as soon as possible.</p>
             </div>
           </div>
         )}

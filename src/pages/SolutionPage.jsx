@@ -155,7 +155,7 @@ export default function SolutionPage() {
 
       <main className="sp-root" ref={pageRef}>
 
-        {/* BACKGROUND LINES */}
+ 
         <svg
           className="sp-bg-lines"
           viewBox="0 0 1440 900"

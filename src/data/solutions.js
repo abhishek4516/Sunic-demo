@@ -55,7 +55,7 @@ export const solutions = {
   "container-location-ocr": {
     title: "Container Location + OCR",
     description: "Track container identity and exact location simultaneously using OCR and positioning systems.",
-    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "/141056-776768318.mp4",
     benefits: [
       {
         title: "Location intelligence",
