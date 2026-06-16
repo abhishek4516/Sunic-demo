@@ -100,14 +100,16 @@ export default function Navbar({ onContactClick }) {
           </div>
 
           <div className="navbar-right">
+            
+            <button className="navbar-demo" onClick={onContactClick}>
+              Contact Us
+            </button>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
               <FontAwesomeIcon 
                 icon={isDark ? faSun : faMoon} 
                 className="theme-icon"
               />
-            </button>
-            <button className="navbar-demo" onClick={onContactClick}>
-              Contact Us
+              
             </button>
           </div>
 

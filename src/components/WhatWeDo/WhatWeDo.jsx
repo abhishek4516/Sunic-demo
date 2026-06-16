@@ -11,7 +11,7 @@ const services = [
     index: "01",
     slug: "rake-number-ocr",
     title: "Rake Number OCR",
-    tag: "OCR",
+   
     desc: "Automated rake number recognition using high-precision OCR — eliminating manual entry across all rail operations.",
     hasVideo: true,
     videoUrl: "/141056-776768318.mp4",
@@ -20,7 +20,7 @@ const services = [
     index: "02",
     slug: "container-number-ocr",
     title: "Container Number OCR",
-    tag: "OCR",
+   
     desc: "Real-time container number extraction from live feeds with sub-second read accuracy at any angle or lighting condition.",
     hasVideo: true,
     videoUrl: "/141056-776768318.mp4",
@@ -38,7 +38,7 @@ const services = [
     index: "04",
     slug: "vehicle-number-ocr",
     title: "Vehicle Number OCR",
-    tag: "OCR",
+   
     desc: "Automatic vehicle plate recognition for trucks, trailers and fleet assets entering or exiting operational zones.",
     hasVideo: true,
     videoUrl: "/141056-776768318.mp4",

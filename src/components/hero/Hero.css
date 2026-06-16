@@ -121,7 +121,7 @@
 }
 
 [data-theme="dark"] .hero-sub {
-  color: var(--text-soft, #a08080);
+  color: white;
 }
 
 .hero-actions {
