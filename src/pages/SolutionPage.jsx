@@ -282,7 +282,7 @@ export default function SolutionPage() {
             </p>
             <div className="sp-cta-actions">
               <a href="/contact" className="sp-btn sp-btn--primary">
-                Request a Demo
+                Contact Us
               </a>
               <a href="/#solutions" className="sp-btn sp-btn--ghost">
                 Explore All Solutions

@@ -1,32 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+  --bg-primary: #fdf7f0;
+  --bg-secondary: #fff5e8;
+  --bg-card: #fffaf5;
+  --bg-navbar: rgba(253, 247, 240, 0.45);
+  --text-primary: #1a0606;
+  --text-secondary: rgba(26, 6, 6, 0.62);
+  --border-color: rgba(201, 48, 48, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.02);
+  --mobile-bg: rgba(253, 247, 240, 0.98);
+  --logo-text: linear-gradient(120deg, #c93030, #d4860a);
+  --hamburger-color: #1a0606;
+  --theme-toggle-bg: #fffaf5;
+  --theme-toggle-border: #f0d8c8;
+  --scrollbar-track: #110404;
+  --scrollbar-thumb: #c93030;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-card: #1a1a1a;
+  --bg-navbar: rgba(10, 10, 10, 0.85);
+  --text-primary: #f5f0ea;
+  --text-secondary: rgba(245, 240, 234, 0.62);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --mobile-bg: rgba(10, 10, 10, 0.98);
+  --logo-text: linear-gradient(120deg, #e04040, #e89d18);
+  --hamburger-color: #f5f0ea;
+  --theme-toggle-bg: #1a1a1a;
+  --theme-toggle-border: #2a1a1a;
+  --scrollbar-track: #050505;
+  --scrollbar-thumb: #e04040;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 40px 0;
-    transition: all 0.3s ease;
-    background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 40px 0;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .navbar-scrolled {
-    padding: 20px 0;
-    background: rgb(255 255 255 / 45%);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(209, 28, 28, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  padding: 20px 0;
+  background: var(--bg-navbar);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px var(--shadow-color);
 }
 
 .navbar-container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
 .navbar-links {
@@ -45,13 +103,17 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(34, 34, 34, 0.62);
+  color: var(--text-secondary);
   transition: color 0.3s ease;
   padding-bottom: 4px;
 }
 
 .navbar-links a:hover {
-  color: #D11C1C;
+  color: #c93030;
+}
+
+[data-theme="dark"] .navbar-links a:hover {
+  color: #e04040;
 }
 
 .navbar-links a::after {
@@ -61,10 +123,14 @@
   bottom: -8px;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, #D11C1C, transparent);
+  background: linear-gradient(90deg, #c93030, transparent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
+}
+
+[data-theme="dark"] .navbar-links a::after {
+  background: linear-gradient(90deg, #e04040, transparent);
 }
 
 .navbar-links a:hover::after {
@@ -78,17 +144,22 @@
 }
 
 .logo-pill {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #22222200, #1a1a1a00);
-    border-radius: 100px;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #22222200, #1a1a1a00);
+  border-radius: 100px;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .logo-pill-small {
-  background: rgba(34, 34, 34, 0.9);
+  background: rgba(26, 6, 6, 0.9);
   backdrop-filter: blur(4px);
-  box-shadow: 0 2px 12px rgba(209, 28, 28, 0.15);
+  box-shadow: 0 2px 12px rgba(201, 48, 48, 0.15);
+}
+
+[data-theme="dark"] .logo-pill-small {
+  background: rgba(245, 240, 234, 0.1);
+  box-shadow: 0 2px 12px rgba(224, 64, 64, 0.2);
 }
 
 .logo-pill-progress {
@@ -96,9 +167,13 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, #D11C1C, #FDB813);
+  background: linear-gradient(90deg, #c93030, #d4860a);
   transition: width 0.1s ease-out;
   z-index: 0;
+}
+
+[data-theme="dark"] .logo-pill-progress {
+  background: linear-gradient(90deg, #e04040, #e89d18);
 }
 
 .logo-pill-content {
@@ -113,40 +188,77 @@
 }
 
 .logo-pill-small .logo-pill-content {
-    padding: 0px 10px;
+  padding: 0px 10px;
 }
+
 .logo-pill-img {
-    height: 50px;
-    object-fit: contain;
-    transition: all 0.3s ease;
+  height: 50px;
+  object-fit: contain;
+  transition: all 0.3s ease;
 }
+
 .logo-pill-small .logo-pill-img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
+
 .logo-pill-text {
-    font-family: 'Manrope', sans-serif;
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    background: linear-gradient(120deg, #D11C1C, #FDB813);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease;
+  font-family: 'Manrope', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--logo-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
 }
+
 .logo-pill-small .logo-pill-text {
-    font-size: 14px;
-    background: linear-gradient(135deg, #ffffff, #ffffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 14px;
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .logo-pill-small .logo-pill-text {
+  background: linear-gradient(135deg, #e04040, #e89d18);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--theme-toggle-bg);
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
+  border-color: #c93030;
+  box-shadow: 0 0 20px rgba(201, 48, 48, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  border-color: #e04040;
+  box-shadow: 0 0 20px rgba(224, 64, 64, 0.2);
 }
 
 .navbar-signin {
@@ -158,35 +270,49 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(34, 34, 34, 0.62);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .navbar-signin:hover {
-  color: #D11C1C;
+  color: #c93030;
+}
+
+[data-theme="dark"] .navbar-signin:hover {
+  color: #e04040;
 }
 
 .navbar-demo {
   padding: 8px 24px;
   border-radius: 100px;
-  border: 1px solid #D11C1C;
+  border: 1px solid #c93030;
   background: transparent;
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #D11C1C;
+  color: #c93030;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .navbar-demo {
+  border-color: #e04040;
+  color: #e04040;
+}
+
 .navbar-demo:hover {
-  background: #D11C1C;
+  background: #c93030;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(209, 28, 28, 0.25);
+  box-shadow: 0 8px 20px rgba(201, 48, 48, 0.25);
+}
+
+[data-theme="dark"] .navbar-demo:hover {
+  background: #e04040;
+  box-shadow: 0 8px 20px rgba(224, 64, 64, 0.25);
 }
 
 .navbar-mobile-btn {
@@ -205,7 +331,7 @@
   left: 10px;
   width: 24px;
   height: 2px;
-  background: #222222;
+  background: var(--hamburger-color);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -221,20 +347,28 @@
 .navbar-mobile-btn.active span:first-child {
   top: 21px;
   transform: rotate(45deg);
-  background: #D11C1C;
+  background: #c93030;
+}
+
+[data-theme="dark"] .navbar-mobile-btn.active span:first-child {
+  background: #e04040;
 }
 
 .navbar-mobile-btn.active span:last-child {
   top: 21px;
   transform: rotate(-45deg);
-  background: #D11C1C;
+  background: #c93030;
+}
+
+[data-theme="dark"] .navbar-mobile-btn.active span:last-child {
+  background: #e04040;
 }
 
 .mobile-menu {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--mobile-bg);
   backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
@@ -272,12 +406,16 @@
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -0.03em;
-  color: #222222;
+  color: var(--text-primary);
   transition: color 0.3s ease;
 }
 
 .mobile-menu-links a:hover {
-  color: #D11C1C;
+  color: #c93030;
+}
+
+[data-theme="dark"] .mobile-menu-links a:hover {
+  color: #e04040;
 }
 
 .mobile-menu-buttons {
@@ -286,6 +424,25 @@
   gap: 16px;
   width: 100%;
   max-width: 220px;
+}
+
+.mobile-menu-theme {
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-theme:hover {
+  background: var(--bg-secondary);
 }
 
 .mobile-menu-signin,
@@ -304,43 +461,237 @@
 .mobile-menu-signin {
   border: none;
   background: transparent;
-  color: rgba(34, 34, 34, 0.62);
+  color: var(--text-secondary);
 }
 
 .mobile-menu-signin:hover {
-  color: #D11C1C;
+  color: #c93030;
+}
+
+[data-theme="dark"] .mobile-menu-signin:hover {
+  color: #e04040;
 }
 
 .mobile-menu-demo {
   border: none;
-  background: linear-gradient(135deg, #D11C1C, #FDB813);
+  background: linear-gradient(135deg, #c93030, #d4860a);
   color: white;
-  box-shadow: 0 8px 20px rgba(209, 28, 28, 0.25);
+  box-shadow: 0 8px 20px rgba(201, 48, 48, 0.25);
+}
+
+[data-theme="dark"] .mobile-menu-demo {
+  background: linear-gradient(135deg, #e04040, #e89d18);
+  box-shadow: 0 8px 20px rgba(224, 64, 64, 0.25);
 }
 
 .mobile-menu-demo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(209, 28, 28, 0.35);
+  box-shadow: 0 12px 28px rgba(201, 48, 48, 0.35);
 }
 
-@media (max-width: 900px) {
+[data-theme="dark"] .mobile-menu-demo:hover {
+  box-shadow: 0 12px 28px rgba(224, 64, 64, 0.35);
+}
+/* Add these styles to your Navbar.css */
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--theme-toggle-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient background for theme toggle */
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(120deg, var(--red, #D11C1C), var(--gold, #FDB813));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
+}
+
+.theme-icon {
+  font-size: 20px;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Light mode icon (Moon) - gradient colored */
+.theme-toggle .theme-icon {
+  background: linear-gradient(120deg, var(--red, #D11C1C), var(--gold, #FDB813));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  opacity: 1;
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* Dark mode icon (Sun) - gradient colored */
+[data-theme="dark"] .theme-toggle .theme-icon {
+  background: linear-gradient(120deg, var(--gold, #FDB813), var(--red, #D11C1C));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .theme-toggle:hover .theme-icon {
+  opacity: 1;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.theme-toggle:hover {
+  border-color: var(--red, #D11C1C);
+  box-shadow: 0 0 30px rgba(209, 28, 28, 0.15);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  border-color: var(--red, #e04040);
+  box-shadow: 0 0 30px rgba(224, 64, 64, 0.2);
+}
+
+/* Mobile menu theme button */
+.mobile-menu-theme {
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mobile-theme-icon {
+  font-size: 18px;
+  background: linear-gradient(120deg, var(--red, #D11C1C), var(--gold, #FDB813));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .mobile-theme-icon {
+  background: linear-gradient(120deg, var(--gold, #FDB813), var(--red, #D11C1C));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mobile-menu-theme:hover {
+  background: var(--bg-secondary);
+  border-color: var(--red, #D11C1C);
+}
+
+[data-theme="dark"] .mobile-menu-theme:hover {
+  border-color: var(--red, #e04040);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .theme-icon {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .theme-icon {
+    font-size: 14px;
+  }
+  
+  .mobile-theme-icon {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1024px) {
   .navbar-links {
-    gap: 20px;
+    gap: 24px;
   }
   
   .navbar-links a {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.1em;
   }
   
   .navbar-signin,
   .navbar-demo {
+    font-size: 12px;
+    padding: 7px 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-links {
+    gap: 16px;
+  }
+  
+  .navbar-links a {
     font-size: 11px;
-    padding: 6px 16px;
+    letter-spacing: 0.08em;
+  }
+  
+  .navbar-signin,
+  .navbar-demo {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+  
+  .navbar-container {
+    padding: 0 24px;
   }
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 20px 0;
+  }
+  
+  .navbar-scrolled {
+    padding: 12px 0;
+  }
+  
   .navbar-links,
   .navbar-right {
     display: none;
@@ -351,29 +702,270 @@
   }
   
   .navbar-container {
-    padding: 0 20px;
+    padding: 0 16px;
+    justify-content: space-between;
   }
   
-  .logo-pill-content {
-    padding: 6px 16px;
+  .navbar-center {
+    position: relative;
+    left: 0;
+    transform: none;
+    flex: 1;
+    display: flex;
+    justify-content: center;
   }
   
-  .logo-pill-img {
-    width: 24px;
-    height: 24px;
+  .logo-pill {
+    background: transparent;
+    backdrop-filter: none;
+    display: flex;
+    align-items: center;
   }
   
-  .logo-pill-text {
-    font-size: 14px;
+  .logo-pill-small {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
   }
-}
-
-@media (max-width: 480px) {
-  .logo-pill-text {
+  
+  .logo-pill-progress {
     display: none;
   }
   
   .logo-pill-content {
-    padding: 6px 12px;
+    padding: 4px 0;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-pill-small .logo-pill-content {
+    padding: 4px 0;
+  }
+  
+  .logo-pill-img {
+    height: 32px;
+    width: 32px;
+  }
+  
+  .logo-pill-small .logo-pill-img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logo-pill-text {
+    font-size: 18px;
+    background: var(--logo-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+  }
+  
+  .logo-pill-small .logo-pill-text {
+    font-size: 18px;
+    background: var(--logo-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 16px 0;
+  }
+  
+  .navbar-scrolled {
+    padding: 10px 0;
+  }
+  
+  .navbar-container {
+    padding: 0 12px;
+  }
+  
+  .logo-pill-img {
+    height: 28px;
+    width: 28px;
+  }
+  
+  .logo-pill-small .logo-pill-img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .logo-pill-text {
+    font-size: 16px;
+  }
+  
+  .logo-pill-small .logo-pill-text {
+    font-size: 16px;
+  }
+  
+  .logo-pill-content {
+    padding: 2px 0;
+    gap: 6px;
+  }
+  
+  .logo-pill-small .logo-pill-content {
+    padding: 2px 0;
+  }
+  
+  .navbar-mobile-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .navbar-mobile-btn span {
+    left: 6px;
+    width: 20px;
+  }
+  
+  .navbar-mobile-btn span:first-child {
+    top: 13px;
+  }
+  
+  .navbar-mobile-btn span:last-child {
+    top: 21px;
+  }
+  
+  .navbar-mobile-btn.active span:first-child {
+    top: 17px;
+  }
+  
+  .navbar-mobile-btn.active span:last-child {
+    top: 17px;
+  }
+  
+  .mobile-menu-links a {
+    font-size: 24px;
+  }
+  
+  .mobile-menu-container {
+    gap: 32px;
+    padding: 24px;
+  }
+  
+  .mobile-menu-links {
+    gap: 24px;
+  }
+  
+  .mobile-menu-buttons {
+    max-width: 180px;
+  }
+  
+  .mobile-menu-signin,
+  .mobile-menu-demo,
+  .mobile-menu-theme {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-pill-text {
+    font-size: 14px;
+  }
+  
+  .logo-pill-small .logo-pill-text {
+    font-size: 14px;
+  }
+  
+  .logo-pill-img {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .logo-pill-small .logo-pill-img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (min-width: 769px) {
+  .logo-pill {
+    background: linear-gradient(135deg, #22222200, #1a1a1a00);
+  }
+  
+  [data-theme="dark"] .logo-pill {
+    background: linear-gradient(135deg, #ffffff00, #ffffff00);
+  }
+  
+  .logo-pill-small {
+    background: rgba(26, 6, 6, 0.9);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 12px rgba(201, 48, 48, 0.15);
+  }
+  
+  [data-theme="dark"] .logo-pill-small {
+    background: rgba(245, 240, 234, 0.1);
+    box-shadow: 0 2px 12px rgba(224, 64, 64, 0.2);
+  }
+  
+  .logo-pill-progress {
+    display: block;
+  }
+  
+  .logo-pill-text {
+    background: var(--logo-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .logo-pill-small .logo-pill-text {
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  [data-theme="dark"] .logo-pill-small .logo-pill-text {
+    background: linear-gradient(135deg, #e04040, #e89d18);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-pill-text {
+    font-size: 20px;
+  }
+  
+  .logo-pill-img {
+    height: 40px;
+  }
+  
+  .logo-pill-content {
+    padding: 6px 18px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .logo-pill-text {
+    font-size: 22px;
+  }
+  
+  .logo-pill-img {
+    height: 44px;
+  }
+  
+  .logo-pill-content {
+    padding: 7px 20px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .logo-pill-text {
+    font-size: 28px;
+  }
+  
+  .logo-pill-img {
+    height: 56px;
+  }
+  
+  .logo-pill-content {
+    padding: 10px 28px;
   }
 }

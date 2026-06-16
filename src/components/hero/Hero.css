@@ -1,12 +1,11 @@
 .hero {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  padding-top: 110px;
-  padding-bottom: 70px;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: var(--bg, #ffffff);
+    padding-top: 110px;
 }
 
 .hero-animate {
@@ -20,10 +19,14 @@
   top: -340px;
   right: -220px;
   border-radius: 50%;
-  background: radial-gradient(rgba(209, 28, 28, 0.08), transparent 70%);
+  background: radial-gradient(var(--hero-glow-color, rgba(209, 28, 28, 0.08)), transparent 70%);
   filter: blur(120px);
   pointer-events: none;
   z-index: 1;
+}
+
+[data-theme="dark"] .hero-glow {
+  background: radial-gradient(rgba(224, 64, 64, 0.15), transparent 70%);
 }
 
 .hero-bg-lines {
@@ -57,8 +60,12 @@
   font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #D11C1C;
+  color: var(--red, #D11C1C);
   font-weight: 600;
+}
+
+[data-theme="dark"] .hero-badge {
+  color: var(--red, #e04040);
 }
 
 .hero-badge-line {
@@ -66,7 +73,11 @@
   width: 34px;
   height: 1px;
   flex-shrink: 0;
-  background: linear-gradient(90deg, #D11C1C, transparent);
+  background: linear-gradient(90deg, var(--red, #D11C1C), transparent);
+}
+
+[data-theme="dark"] .hero-badge-line {
+  background: linear-gradient(90deg, var(--red, #e04040), transparent);
 }
 
 .hero-title {
@@ -74,20 +85,31 @@
   font-size: clamp(46px, 5vw, 60px);
   line-height: 0.96;
   letter-spacing: -0.05em;
-  color: #222222;
+  color: var(--text, #222222);
   margin: 0;
   font-weight: 700;
+}
+
+[data-theme="dark"] .hero-title {
+  color: var(--text, #f5f0ea);
 }
 
 .hero-title strong {
   display: inline-block;
   margin-top: 10px;
   font-weight: 700;
-  background: linear-gradient(120deg, #D11C1C, #FDB813);
+  background: linear-gradient(120deg, var(--red, #D11C1C), var(--gold, #FDB813));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   padding-bottom: 10px;
+}
+
+[data-theme="dark"] .hero-title strong {
+  background: linear-gradient(120deg, var(--red, #e04040), var(--gold, #e89d18));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-sub {
@@ -95,7 +117,11 @@
   max-width: 520px;
   font-size: 20px;
   line-height: 1.9;
-  color: #666666;
+  color: var(--text-soft, #666666);
+}
+
+[data-theme="dark"] .hero-sub {
+  color: var(--text-soft, #a08080);
 }
 
 .hero-actions {
@@ -118,7 +144,7 @@
   padding: 15px 25px !important;
   border-radius: 25px !important;
   text-decoration: none;
-  background: linear-gradient(135deg, #D11C1C, #FDB813);
+  background: linear-gradient(135deg, var(--red, #D11C1C), var(--gold, #FDB813));
   color: white;
   font-size: 12px !important;
   font-weight: 600;
@@ -128,9 +154,18 @@
   box-shadow: 0 14px 36px rgba(209, 28, 28, 0.22);
 }
 
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, var(--red, #e04040), var(--gold, #e89d18));
+  box-shadow: 0 14px 36px rgba(224, 64, 64, 0.25);
+}
+
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 18px 42px rgba(209, 28, 28, 0.28);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 18px 42px rgba(224, 64, 64, 0.35);
 }
 
 .btn-outline {
@@ -140,10 +175,10 @@
   padding: 15px 25px;
   border-radius: 25px;
   text-decoration: none;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+  background: var(--btn-outline-bg, rgba(255, 255, 255, 0.6));
   backdrop-filter: blur(10px);
-  color: #222222;
+  color: var(--text, #222222);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -151,10 +186,21 @@
   transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border, rgba(255, 255, 255, 0.1));
+  color: var(--text, #f5f0ea);
+}
+
 .btn-outline:hover {
-  border-color: #D11C1C;
-  color: #D11C1C;
+  border-color: var(--red, #D11C1C);
+  color: var(--red, #D11C1C);
   transform: translateY(-2px);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  border-color: var(--red, #e04040);
+  color: var(--red, #e04040);
 }
 
 @media (max-width: 1440px) {

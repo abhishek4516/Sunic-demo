@@ -93,7 +93,7 @@ export default function Intro() {
         defaults: { ease: "power3.out" },
       });
 
-      /* 1 — LABEL: line draws in, then text slides in */
+
       tl.fromTo(
         labelLineRef.current,
         { scaleX: 0, transformOrigin: "left center" },
@@ -105,7 +105,7 @@ export default function Intro() {
         "-=0.15"
       );
 
-      /* 2 — TITLE: each word slides up staggered */
+   
       tl.fromTo(
         titleWordsRef.current,
         { yPercent: 115, opacity: 0 },
@@ -113,7 +113,7 @@ export default function Intro() {
         "-=0.1"
       );
 
-      /* 3 — DESCRIPTIONS: fade up with blur wipe */
+ 
       tl.fromTo(
         [desc1Ref.current, desc2Ref.current],
         { opacity: 0, y: 28, filter: "blur(6px)" },
@@ -128,7 +128,7 @@ export default function Intro() {
         "-=0.35"
       );
 
-      /* 4 — LEFT COLUMN PARALLAX */
+
       gsap.to(leftRef.current, {
         y: -120,
         ease: "none",
@@ -152,7 +152,7 @@ export default function Intro() {
   return (
     <section className="intro-section" ref={introRef}>
 
-      {/* BACKGROUND LINES */}
+
       <svg
         className="intro-bg-lines"
         viewBox="0 0 1440 900"
@@ -181,7 +181,6 @@ export default function Intro() {
 <div className="layout-container">
       <div className="intro-layout">
 
-        {/* LEFT */}
         <div className="intro-left" ref={leftRef}>
 
           <div className="section-label">
@@ -219,7 +218,7 @@ export default function Intro() {
 
         </div>
 
-        {/* RIGHT — CAROUSEL */}
+ 
         <div
           className="intro-right"
           onMouseEnter={stopAutoplay}

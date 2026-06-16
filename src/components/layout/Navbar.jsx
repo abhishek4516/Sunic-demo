@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/sunic_logo.png";
 import "./Navbar.css";
 
@@ -6,6 +8,21 @@ export default function Navbar({ onContactClick }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +58,10 @@ export default function Navbar({ onContactClick }) {
     setMenuOpen(false);
   };
 
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
+
   const navItems = [
     { name: "About", id: "about" },
     { name: "Solutions", id: "solutions" },
@@ -52,8 +73,6 @@ export default function Navbar({ onContactClick }) {
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <div className="navbar-container">
-          
-      
           <ul className="navbar-links">
             {navItems.map((item) => (
               <li key={item.name}>
@@ -80,11 +99,15 @@ export default function Navbar({ onContactClick }) {
             </div>
           </div>
 
-      
           <div className="navbar-right">
-         
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              <FontAwesomeIcon 
+                icon={isDark ? faSun : faMoon} 
+                className="theme-icon"
+              />
+            </button>
             <button className="navbar-demo" onClick={onContactClick}>
-              Book a demo
+              Contact Us
             </button>
           </div>
 
@@ -114,11 +137,12 @@ export default function Navbar({ onContactClick }) {
             ))}
           </ul>
           <div className="mobile-menu-buttons">
-            <button className="mobile-menu-demo" onClick={() => {
-              setMenuOpen(false);
-              onContactClick();
-            }}>
-              Book a demo
+            <button className="mobile-menu-theme" onClick={toggleTheme}>
+              <FontAwesomeIcon 
+                icon={isDark ? faSun : faMoon} 
+                className="mobile-theme-icon"
+              />
+              {isDark ? ' Light Mode' : ' Dark Mode'}
             </button>
           </div>
         </div>

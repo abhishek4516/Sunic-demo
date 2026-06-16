@@ -1,6 +1,6 @@
 import "./WhatWeDo.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,6 +13,8 @@ const services = [
     title: "Rake Number OCR",
     tag: "OCR",
     desc: "Automated rake number recognition using high-precision OCR — eliminating manual entry across all rail operations.",
+    hasVideo: true,
+    videoUrl: "/141056-776768318.mp4",
   },
   {
     index: "02",
@@ -20,6 +22,8 @@ const services = [
     title: "Container Number OCR",
     tag: "OCR",
     desc: "Real-time container number extraction from live feeds with sub-second read accuracy at any angle or lighting condition.",
+    hasVideo: true,
+    videoUrl: "/141056-776768318.mp4",
   },
   {
     index: "03",
@@ -36,6 +40,8 @@ const services = [
     title: "Vehicle Number OCR",
     tag: "OCR",
     desc: "Automatic vehicle plate recognition for trucks, trailers and fleet assets entering or exiting operational zones.",
+    hasVideo: true,
+    videoUrl: "/141056-776768318.mp4",
   },
   {
     index: "05",
@@ -43,6 +49,8 @@ const services = [
     title: "Face Recognition & Extraction",
     tag: "AI · Security",
     desc: "Biometric access control and personnel extraction using live face recognition — integrated with gate and zone systems.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "06",
@@ -59,6 +67,8 @@ const services = [
     title: "Gate Operation Automation",
     tag: "Automation",
     desc: "Smart gate systems with automated verification, barrier control and real-time operator override for zero-friction entry.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "08",
@@ -66,6 +76,8 @@ const services = [
     title: "Warehouse Management",
     tag: "Warehousing",
     desc: "End-to-end warehouse automation covering package count, inventory tracking and dynamic area management.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "09",
@@ -73,6 +85,8 @@ const services = [
     title: "Custom Infra Setup",
     tag: "Infrastructure",
     desc: "Bespoke infrastructure design and deployment — sized exactly to your operational footprint with zero over-provisioning.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "10",
@@ -80,6 +94,8 @@ const services = [
     title: "Data Storage Solutions",
     tag: "Infrastructure",
     desc: "On-premises and hybrid storage architectures built for high-volume operational data with redundancy and fast retrieval.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
   {
     index: "11",
@@ -87,6 +103,8 @@ const services = [
     title: "Data Centre Solutions",
     tag: "Infrastructure",
     desc: "Full data centre builds and managed environments — power, cooling, networking and compute tuned for industrial scale.",
+    hasVideo: true,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
   },
 ];
 
@@ -109,10 +127,23 @@ export default function WhatWeDo() {
   const hintRef = useRef(null);
   const cardsRef = useRef([]);
   const videoRefs = useRef({});
+  const [showSkip, setShowSkip] = useState(false);
+  const scrollTriggerRef = useRef(null);
 
   const handleCardClick = (slug) => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     navigate(`/solutions/${slug}`);
+  };
+
+  const handleSkip = () => {
+    setShowSkip(false);
+    const ecosystemSection = document.getElementById("ecosystem");
+    if (ecosystemSection) {
+      ecosystemSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   useEffect(() => {
@@ -203,35 +234,58 @@ export default function WhatWeDo() {
             card.classList.remove('wwd-card-active');
           }
           
-          let scale, opacity;
-          
-          if (isActive) {
-            scale = 1.15;
-            opacity = 1;
-          } else {
-            const distance = Math.abs(i - activeIdx);
-            if (distance === 1) {
-              scale = 0.9;
-              opacity = 0.7;
+          const slug = services[i]?.slug;
+          const video = videoRefs.current[slug];
+          if (video) {
+            if (isActive) {
+              video.play().catch(() => {});
             } else {
-              scale = 0.8;
-              opacity = 0.4;
+              video.pause();
             }
           }
           
-          gsap.to(card, { 
-            scale, 
-            opacity, 
-            duration: 0.35, 
-            ease: "power2.out", 
-            overwrite: true 
+          let scale, opacity, contentOpacity;
+          
+          if (isActive) {
+            scale = 1.2;
+            opacity = 1;
+            contentOpacity = 1;
+          } else {
+            const distance = Math.abs(i - activeIdx);
+            if (distance === 1) {
+              scale = 0.85;
+              opacity = 0.6;
+              contentOpacity = 0;
+            } else {
+              scale = 0.7;
+              opacity = 0.3;
+              contentOpacity = 0;
+            }
+          }
+          
+          const contentEl = card.querySelector('.wwd-card-content');
+          if (contentEl) {
+            gsap.to(contentEl, {
+              opacity: contentOpacity,
+              duration: 0.4,
+              ease: "power2.out",
+              overwrite: true
+            });
+          }
+          
+          gsap.to(card, {
+            scale,
+            opacity,
+            duration: 0.4,
+            ease: "power2.out",
+            overwrite: true
           });
         });
       };
 
       setTimeout(() => updateCardHighlights(), 100);
 
-      const pinST = ScrollTrigger.create({
+      scrollTriggerRef.current = ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
         end: () => `+=${getScrollDistance()}`,
@@ -241,18 +295,24 @@ export default function WhatWeDo() {
         invalidateOnRefresh: true,
 
         onEnter: () => {
-          gsap.to(cardsAreaRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+          setShowSkip(true);
+          gsap.to(cardsAreaRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              gsap.set(cardsAreaRef.current, { display: "flex" });
+            },
+          });
           gsap.to(statsRef.current, { opacity: 0, y: -10, duration: 0.3 });
           gsap.to(descRef.current, { opacity: 0.35, duration: 0.3 });
           gsap.to(progressBarRef.current, { opacity: 1, duration: 0.4 });
           gsap.to(hintRef.current, { opacity: 1, duration: 0.4 });
-          
-          Object.values(videoRefs.current).forEach(video => {
-            if (video) video.play();
-          });
         },
 
         onLeaveBack: () => {
+          setShowSkip(false);
           gsap.to(cardsAreaRef.current, { opacity: 0, y: 40, duration: 0.4 });
           gsap.to(statsRef.current, { opacity: 1, y: 0, duration: 0.4 });
           gsap.to(descRef.current, { opacity: 1, duration: 0.4 });
@@ -262,6 +322,10 @@ export default function WhatWeDo() {
           cardsRef.current.forEach((card) => {
             if (card) {
               card.classList.remove('wwd-card-active');
+              const contentEl = card.querySelector('.wwd-card-content');
+              if (contentEl) {
+                gsap.to(contentEl, { opacity: 0, duration: 0.3 });
+              }
               gsap.to(card, { scale: 1, opacity: 1, duration: 0.3 });
             }
           });
@@ -288,13 +352,17 @@ export default function WhatWeDo() {
       const handleResize = () => {
         gsap.set(track, { x: getInitialX() });
         updateCardHighlights();
-        pinST.refresh();
+        if (scrollTriggerRef.current) {
+          scrollTriggerRef.current.refresh();
+        }
       };
       
       window.addEventListener('resize', handleResize);
 
       return () => {
-        pinST.kill();
+        if (scrollTriggerRef.current) {
+          scrollTriggerRef.current.kill();
+        }
         window.removeEventListener('resize', handleResize);
       };
     }, sectionRef);
@@ -306,7 +374,7 @@ export default function WhatWeDo() {
     <section className="wwd-root" id="solutions" ref={sectionRef}>
       <svg className="wwd-bg-lines" viewBox="0 0 1440 900"
         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <g fill="none" stroke="#c94a4a" strokeLinecap="round">
+        <g fill="none" stroke="var(--red, #c94a4a)" strokeLinecap="round">
           <path d="M 0,0 C 380,55  980,110 1440,150" strokeWidth="0.9" opacity="0.16" />
           <path d="M 0,0 C 360,100 920,210 1440,290" strokeWidth="0.9" opacity="0.14" />
           <path d="M 0,0 C 330,150 860,320 1440,440" strokeWidth="0.9" opacity="0.13" />
@@ -315,6 +383,12 @@ export default function WhatWeDo() {
           <path d="M 0,0 C 230,310 620,645 1440,880" strokeWidth="0.9" opacity="0.10" />
         </g>
       </svg>
+
+      {showSkip && (
+        <button className="wwd-skip-btn" onClick={handleSkip}>
+          Skip Section →
+        </button>
+      )}
 
       <div className="layout-container">
         <div className="wwd-pinned-inner">
@@ -333,21 +407,6 @@ export default function WhatWeDo() {
               Enterprise-grade OCR, automation, and infrastructure — purpose-built for logistics,
               warehousing, and industrial operations.
             </p>
-
-            <div className="wwd-stats" ref={statsRef}>
-              <div>
-                <div className="wwd-stat-num">11<span>+</span></div>
-                <div className="wwd-stat-label">Core Solutions</div>
-              </div>
-              <div>
-                <div className="wwd-stat-num">99<span>%</span></div>
-                <div className="wwd-stat-label">OCR Accuracy</div>
-              </div>
-              <div>
-                <div className="wwd-stat-num">24<span>/7</span></div>
-                <div className="wwd-stat-label">Uptime SLA</div>
-              </div>
-            </div>
 
             <div className="wwd-progress-bar" ref={progressBarRef}>
               <div className="wwd-progress-fill" ref={progressFillRef} />

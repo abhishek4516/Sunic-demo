@@ -3,20 +3,30 @@
 .footer {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F5 100%);
+  background: var(--bg, #FFFFFF);
   padding: 30px 30px;
   font-family: "manrope", sans-serif;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .footer {
+  background: var(--bg, #0a0a0a);
 }
 
 .footer::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(209, 28, 28, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot-color, rgba(209, 28, 28, 0.08)) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
   opacity: 0.45;
   pointer-events: none;
+  transition: background-image 0.3s ease;
+}
+
+[data-theme="dark"] .footer::before {
+  background-image: radial-gradient(var(--dot-color, rgba(224, 64, 64, 0.08)) 1px, transparent 1px);
 }
 
 .footer::after {
@@ -27,9 +37,14 @@
   bottom: -360px;
   right: -220px;
   border-radius: 50%;
-  background: radial-gradient(rgba(209, 28, 28, 0.08), transparent 70%);
+  background: radial-gradient(var(--glow-color, rgba(209, 28, 28, 0.08)), transparent 70%);
   filter: blur(120px);
   pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .footer::after {
+  background: radial-gradient(var(--glow-color, rgba(224, 64, 64, 0.08)), transparent 70%);
 }
 
 .footer-bottom {
@@ -40,10 +55,16 @@
   align-items: center;
   gap: 20px;
   padding-top: 28px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid var(--border, rgba(0, 0, 0, 0.06));
   font-size: 13px;
   letter-spacing: 0.04em;
-  color: rgba(34, 34, 34, 0.52);
+  color: var(--text-soft, rgba(34, 34, 34, 0.52));
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  color: var(--text-soft, rgba(245, 240, 234, 0.52));
 }
 
 .footer-bottom span {
@@ -51,7 +72,11 @@
 }
 
 .footer-bottom span:hover {
-  color: #D11C1C;
+  color: var(--red, #D11C1C);
+}
+
+[data-theme="dark"] .footer-bottom span:hover {
+  color: var(--red, #e04040);
 }
 
 @media (max-width: 768px) {
