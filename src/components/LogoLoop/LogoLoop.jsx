@@ -72,24 +72,24 @@ export default function LogoLoop() {
   return (
     <section className="logoloop-section">
       <div className="layout-container">
-        {/* Section Header - matching your theme */}
+      
         <div className="logoloop-header">
           <span className="logoloop-eyebrow">
             <span className="logoloop-eyebrow-line"></span>
-            Trusted Partners
+           Built on Strong Partnerships
           </span>
           <h2 className="logoloop-title">
-            Our <em>Partners</em>
+            Our <em>Clients & Partners</em>
           </h2>
           <p className="logoloop-desc">
-            Proud to collaborate with industry-leading technology partners
+           Empowering innovation through strong partnerships and successful client relationships.
           </p>
         </div>
 
-        {/* Logo Loop */}
+        
         <div className="logoloop-container">
           <div className="logoloop-track">
-            {/* First set of logos */}
+            
             {logos.map((logo, index) => (
               <div key={`first-${index}`} className="logoloop-item">
                 {logo.cdnUrl ? (
@@ -110,7 +110,7 @@ export default function LogoLoop() {
                 </div>
               </div>
             ))}
-            {/* Duplicate set for seamless loop */}
+           
             {logos.map((logo, index) => (
               <div key={`second-${index}`} className="logoloop-item">
                 {logo.cdnUrl ? (

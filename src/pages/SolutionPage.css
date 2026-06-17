@@ -636,13 +636,13 @@
   border-bottom: 1px solid var(--border, #2a1a1a);
 }
 
-.sp-accordion-item--open {
+/* .sp-accordion-item--open {
   background: var(--red-pale, rgba(209, 28, 28, 0.025));
-}
+} */
 
-[data-theme="dark"] .sp-accordion-item--open {
+/* [data-theme="dark"] .sp-accordion-item--open {
   background: var(--red-pale, rgba(224, 64, 64, 0.025));
-}
+} */
 
 .sp-accordion-trigger {
   width: 100%;

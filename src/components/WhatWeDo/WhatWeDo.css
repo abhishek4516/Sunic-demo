@@ -611,6 +611,8 @@
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  /* Standard property for line clamping */
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   position: relative;

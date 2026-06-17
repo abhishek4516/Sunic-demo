@@ -257,11 +257,11 @@
 }
 
 .label-line {
-  width: 28px;
-  height: 1px;
-  background: var(--red, #D11C1C);
-  opacity: 0.6;
-  transition: background 0.3s ease;
+  display: block;
+    width: 34px;
+    height: 1px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, var(--red, #D11C1C), transparent);
 }
 
 [data-theme="dark"] .label-line {

@@ -2,29 +2,13 @@ import { useEffect, useRef } from "react";
 import "./Hero.css";
 import gsap from "gsap";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-
-function TrainModel() {
-  const { scene } = useGLTF("models/engine.glb");
-
-  return (
-    <primitive
-      object={scene}
-      scale={1.5}
-      position={[0, -1, 0]}
-      rotation={[0, Math.PI / 4, 0]}
-    />
-  );
-}
-
 export default function Hero() {
   const heroRef = useRef(null);
   const badgeRef = useRef(null);
   const titleRef = useRef(null);
   const subRef = useRef(null);
   const actionsRef = useRef(null);
-  const visualRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,13 +54,6 @@ export default function Hero() {
         },
         "-=0.25"
       );
-
-      tl.fromTo(
-        visualRef.current,
-        { opacity: 0, x: 40, scale: 0.96 },
-        { opacity: 1, x: 0, scale: 1, duration: 1, ease: "power3.out" },
-        "-=0.5"
-      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -84,6 +61,22 @@ export default function Hero() {
 
   return (
     <section className="hero" id="home" ref={heroRef}>
+      <div className="hero-video-wrapper">
+        <video
+          ref={videoRef}
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-poster.jpg"
+        >
+          <source src="/141056-776768318.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
+        </video>
+        <div className="hero-video-overlay" />
+      </div>
+
       <svg
         className="hero-bg-lines"
         viewBox="0 0 1440 900"
@@ -135,8 +128,6 @@ export default function Hero() {
         </g>
       </svg>
 
-      <div className="hero-glow" />
-
       <div className="layout-container">
         <div className="hero-container">
           <div className="hero-content">
@@ -167,32 +158,6 @@ export default function Hero() {
                 Talk to Experts
               </a>
             </div>
-          </div>
-
-          {/* TRAIN MODEL */}
-          <div
-            ref={visualRef}
-            style={{
-              width: "100%",
-              height: "500px",
-            }}
-          >
-            <Canvas camera={{ position: [5, 2, 8], fov: 45 }}>
-              <ambientLight intensity={2} />
-
-              <directionalLight
-                position={[10, 10, 5]}
-                intensity={3}
-              />
-
-              <TrainModel />
-
-              <OrbitControls
-                enableZoom={false}
-                autoRotate
-                autoRotateSpeed={1}
-              />
-            </Canvas>
           </div>
         </div>
       </div>

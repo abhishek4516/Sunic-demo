@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/sunic_logo.png";
 import "./Navbar.css";
 
@@ -100,16 +100,17 @@ export default function Navbar({ onContactClick }) {
           </div>
 
           <div className="navbar-right">
-            
             <button className="navbar-demo" onClick={onContactClick}>
               Contact Us
             </button>
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-              <FontAwesomeIcon 
-                icon={isDark ? faSun : faMoon} 
-                className="theme-icon"
-              />
-              
+            <button className="theme-toggle--button" onClick={toggleTheme} aria-label="Toggle theme">
+              <span className={`shape ${isDark ? 'sun' : 'moon'}`}></span>
+              <span className="rays--container">
+                <span className="ray"></span>
+                <span className="ray"></span>
+                <span className="ray"></span>
+                <span className="ray"></span>
+              </span>
             </button>
           </div>
 
@@ -140,10 +141,18 @@ export default function Navbar({ onContactClick }) {
           </ul>
           <div className="mobile-menu-buttons">
             <button className="mobile-menu-theme" onClick={toggleTheme}>
-              <FontAwesomeIcon 
-                icon={isDark ? faSun : faMoon} 
-                className="mobile-theme-icon"
-              />
+              <span className="mobile-shape" style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                display: 'inline-block',
+                position: 'relative',
+                background: 'transparent',
+                boxShadow: isDark 
+                  ? 'inset -5px -5px #e04040' 
+                  : 'inset -7px -7px #c93030',
+                border: isDark ? 'none' : '2px solid #c93030'
+              }}></span>
               {isDark ? ' Light Mode' : ' Dark Mode'}
             </button>
           </div>

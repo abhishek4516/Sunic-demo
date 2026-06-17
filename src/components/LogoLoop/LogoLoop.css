@@ -79,7 +79,6 @@
   color: var(--text-muted, #888888);
   font-size: 16px;
   line-height: 1.6;
-  max-width: 500px;
   transition: color 0.3s ease;
 }
 
@@ -126,7 +125,7 @@
 .logoloop-track {
   display: flex;
   gap: 48px;
-  animation: scrollLogos 30s linear infinite;
+  animation: scrollLogos 100s linear infinite;
   width: fit-content;
 }
 
@@ -137,35 +136,51 @@
 .logoloop-item {
   flex-shrink: 0;
   padding: 20px 32px;
-  transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.logoloop-item::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 12px;
+  background: radial-gradient(circle, rgba(209, 28, 28, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.logoloop-item:hover::after {
+  opacity: 1;
 }
 
 .logoloop-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .logo-image {
-  height: 40px;
+  height: 65px;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.5;
-  transition: all 0.3s ease;
+  opacity: 0.75;
+  transition: all 0.4s ease;
+  filter: brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(3180%) hue-rotate(353deg) brightness(89%) contrast(94%);
 }
 
 [data-theme="dark"] .logo-image {
-  filter: grayscale(100%);
-  opacity: 0.3;
+  opacity: 0.7;
+  filter: brightness(0) saturate(100%) invert(25%) sepia(95%) saturate(2144%) hue-rotate(351deg) brightness(105%) contrast(96%);
 }
 
 .logoloop-item:hover .logo-image {
-  filter: grayscale(0%);
   opacity: 1;
+  transform: scale(1.08);
+  filter: brightness(0) saturate(100%) invert(67%) sepia(78%) saturate(934%) hue-rotate(357deg) brightness(101%) contrast(103%);
 }
 
 .logo-fallback {
@@ -179,34 +194,21 @@
 .logo-name {
   font-family: 'Syne', sans-serif;
   font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text-muted, #999999);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--red, #D11C1C);
+  opacity: 0.7;
+  transition: all 0.4s ease;
   white-space: nowrap;
-  transition: all 0.3s ease;
-  filter: grayscale(100%);
-  opacity: 0.6;
 }
 
 [data-theme="dark"] .logo-name {
-  color: var(--text-muted, #666666);
+  color: var(--red, #e04040);
+  opacity: 0.75;
 }
 
 .logoloop-item:hover .logo-name {
-  background: linear-gradient(120deg, var(--red, #D11C1C), var(--gold, #FDB813));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
-[data-theme="dark"] .logoloop-item:hover .logo-name {
-  background: linear-gradient(120deg, var(--red, #e04040), var(--gold, #e89d18));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: grayscale(0%);
+  color: var(--gold, #FDB813);
   opacity: 1;
 }
 
@@ -223,7 +225,7 @@
   .logoloop-section {
     padding: 70px 0;
   }
-  
+
   .logoloop-container::before,
   .logoloop-container::after {
     width: 60px;
@@ -252,8 +254,8 @@
   }
 
   .logo-image {
-    height: 30px;
-    max-width: 90px;
+    height: 45px;
+    max-width: 100px;
   }
 
   .logo-fallback {
@@ -297,8 +299,8 @@
   }
 
   .logo-image {
-    height: 25px;
-    max-width: 70px;
+    height: 35px;
+    max-width: 80px;
   }
 
   .logo-fallback {
