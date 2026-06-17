@@ -1,7 +1,7 @@
 import Hero from "../components/hero/Hero";
 // import Intro from "../components/intro/Intro";
 import WhatWeDo from "../components/WhatWeDo/WhatWeDo";
-import Ecosystem from "../components/Ecosystem/EcoSystem";
+import Ecosystem from "../components/Ecosystem/Ecosystem";
 import ContactCTA from "../components/contact/ContactCTA";
 import Footer from "../components/layout/Footer";
 import LogoLoop from "../components/LogoLoop/LogoLoop";
