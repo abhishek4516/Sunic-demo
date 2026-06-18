@@ -139,7 +139,7 @@ export default function Hero() {
             <h1 className="hero-title" ref={titleRef}>
              AI-Powered 
               <br />
-              <strong>Container Yard Intelligence</strong>
+              <strong>Yard Intelligence</strong>
             </h1>
 
             <p className="hero-sub" ref={subRef}>
