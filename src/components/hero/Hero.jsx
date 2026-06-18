@@ -137,9 +137,9 @@ export default function Hero() {
             </div>
 
             <h1 className="hero-title" ref={titleRef}>
-              Industrial Systems
+             AI-Powered 
               <br />
-              <strong>Built for Intelligent Operations.</strong>
+              <strong>Container Yard Intelligence</strong>
             </h1>
 
             <p className="hero-sub" ref={subRef}>

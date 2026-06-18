@@ -45,12 +45,12 @@ export default function ContactCTA({ onContactClick }) {
 
       <div className="layout-container">
         <h2 className="cta-title">
-          Ready to strengthen your
+          Let's Build 
           <br />
-          <strong>IT infrastructure?</strong>
+          <strong>Smarter</strong>
         </h2>
 
-        <p className="cta-sub">Talk to our experts today.</p>
+        <p className="cta-sub">Discover how AI-driven operations can transform your yard, improve productivity, and unlock new opportunities for growth.</p>
 
         <button className="btn-primary" onClick={onContactClick}>
           Contact Us

@@ -79,7 +79,7 @@ export default function Ecosystem() {
 
   return (
     <section className="eco-section" id="ecosystem" ref={sectionRef}>
-      {/* BACKGROUND LINES */}
+   
       <svg
         className="eco-bg-lines"
         viewBox="0 0 1440 900"
@@ -101,7 +101,7 @@ export default function Ecosystem() {
       <div className="layout-container">
         <div className="eco-grid">
           
-          {/* LEFT - Content Section */}
+   
           <div className="eco-content">
             <div className="eco-partner-badge" ref={labelRef}>
               <span className="partner-badge-line"></span>
@@ -120,7 +120,6 @@ export default function Ecosystem() {
               processing, and provides end-to-end visibility for export-import operations.
             </p>
 
-            {/* Stats Section */}
             <div className="eco-impact-stats" ref={statsRef}>
               <div className="impact-stat">
                 <div className="impact-number">24/7</div>
@@ -149,11 +148,11 @@ export default function Ecosystem() {
             </a>
           </div>
 
-          {/* RIGHT - Dashboard Preview Card */}
+         
           <div className="eco-dashboard-card" ref={dashboardRef}>
             <div className="dashboard-card-inner">
               
-              {/* CONCOR + Sunic Logos */}
+        
               <div className="dashboard-logos">
                 <div className="logo-item concor-logo">
                   <img 
@@ -172,14 +171,14 @@ export default function Ecosystem() {
                 </div>
               </div>
 
-              {/* Dashboard Title */}
+           
               <div className="dashboard-header-text">
-                {/* <span className="dashboard-badge">Live Deployment</span> */}
+               
                 <h3 className="dashboard-name">KYCL Dashboard</h3>
                 <p className="dashboard-subtitle">AI-Powered Real-Time Status & Tracking</p>
               </div>
 
-              {/* KYCL DASHBOARD IMAGE - Your actual screenshot */}
+              
               <div className="dashboard-image-wrapper">
                 <img 
                   src={kyclDashboard} 
@@ -188,7 +187,7 @@ export default function Ecosystem() {
                 />
               </div>
 
-              {/* Dashboard Features */}
+            
               <div className="dashboard-features">
                 <div className="feature-tag">
                   <span className="feature-dot"></span>
@@ -204,10 +203,10 @@ export default function Ecosystem() {
                 </div>
               </div>
 
-              {/* Location & Status */}
+         
               <div className="dashboard-location-status">
                 <div className="location-info">
-                  {/* <span className="location-icon">📍</span> */}
+               
                   <span>For ICD Tughlakabad</span>
                 </div>
                 <div className="live-status">
@@ -216,7 +215,6 @@ export default function Ecosystem() {
                 </div>
               </div>
 
-              {/* Footer */}
               <div className="dashboard-footer-note">
                 <span>Powered by</span>
                 <strong>Sunic Technologies</strong>

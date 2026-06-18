@@ -41,7 +41,7 @@ export default function BackToTop() {
           >
             <polyline points="18 15 12 9 6 15"></polyline>
           </svg>
-          {/* <span>Back to Top</span> */}
+        
         </button>
       )}
     </>

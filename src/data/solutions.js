@@ -1,9 +1,10 @@
 import datastorage from "../assets/datastorage.png";
+
 export const solutions = {
   "rake-number-ocr": {
     title: "Rake Number OCR",
     description: "Automated identification of railway rake numbers using OCR and AI-powered computer vision.",
-    image: "https://images.unsplash.com/photo-1557992260-ec58bee38f3b?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "/141056-776768318.mp4",
     benefits: [
       {
         title: "Real-time OCR",
@@ -31,7 +32,7 @@ export const solutions = {
   "container-number-ocr": {
     title: "Container Number OCR",
     description: "Automatically capture and validate container numbers from cameras in real time.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "/141056-776768318.mp4",
     benefits: [
       {
         title: "Fast container processing",
@@ -79,7 +80,7 @@ export const solutions = {
   "vehicle-number-ocr": {
     title: "Vehicle Number OCR",
     description: "Capture and process vehicle registration numbers automatically.",
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "/vocr_detailed.mp4",
     benefits: [
       {
         title: "Gate automation",
@@ -103,7 +104,7 @@ export const solutions = {
   "face-recognition-extraction": {
     title: "Face Recognition & Extraction",
     description: "AI-powered face recognition for access control, workforce management and security monitoring.",
-    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Biometric authentication",
@@ -127,7 +128,7 @@ export const solutions = {
   "gps-location-of-container": {
     title: "GPS Location of Container",
     description: "Monitor container movement and location continuously through integrated GPS tracking systems.",
-    image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b6?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Live location visibility",
@@ -151,7 +152,7 @@ export const solutions = {
   "gate-operation-automation": {
     title: "Gate Operation Automation",
     description: "Automate gate verification, vehicle validation and entry/exit processes with intelligent workflows.",
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Faster gate processing",
@@ -175,7 +176,7 @@ export const solutions = {
   "warehouse-management": {
     title: "Warehouse Management",
     description: "Comprehensive warehouse management solutions covering inventory, movement and operational visibility.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Inventory control",
@@ -199,7 +200,7 @@ export const solutions = {
   "custom-infra-setup": {
     title: "Custom Infra Setup",
     description: "Design and deployment of tailored IT infrastructure solutions built around operational requirements.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Scalable architecture",
@@ -223,7 +224,7 @@ export const solutions = {
   "data-storage-solutions": {
     title: "Data Storage Solutions",
     description: "Secure and scalable storage platforms for enterprise applications and operational data.",
-    image: datastorage,
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Data redundancy",
@@ -247,7 +248,7 @@ export const solutions = {
   "data-centre-solutions": {
     title: "Data Centre Solutions",
     description: "End-to-end data centre infrastructure including compute, networking, cooling and power systems.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    videoUrl: "https://cdn.pixabay.com/video/2022/03/14/110926-690507276_large.mp4",
     benefits: [
       {
         title: "Enterprise reliability",

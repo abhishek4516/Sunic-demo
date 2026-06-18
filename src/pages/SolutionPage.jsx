@@ -1,28 +1,32 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./SolutionPage.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { solutions } from "../data/solutions";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ContactModal from "../components/Contact/ContactModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SolutionPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const solution = solutions[slug];
 
   const [openIndex, setOpenIndex] = useState(null);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const pageRef     = useRef(null);
-  const labelRef    = useRef(null);
-  const titleRef    = useRef(null);
-  const descRef     = useRef(null);
-  const imageRef    = useRef(null);
+  const pageRef = useRef(null);
+  const labelRef = useRef(null);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const imageRef = useRef(null);
   const featuresRef = useRef([]);
-  const ctaRef      = useRef(null);
-
+  const ctaRef = useRef(null);
+  const backButtonRef = useRef(null);
+  const videoRef = useRef(null);
 
   const accordionBodyRefs = useRef([]);
 
@@ -52,6 +56,22 @@ export default function SolutionPage() {
     setOpenIndex(newIndex);
   };
 
+  const handleBack = () => {
+    navigate('/#solutions');
+  };
+
+  const handleContactOpen = () => {
+    setIsContactOpen(true);
+  };
+
+  const handleContactClose = () => {
+    setIsContactOpen(false);
+  };
+
+  const handleExploreAll = () => {
+    navigate('/#solutions');
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     ScrollTrigger.clearScrollMemory();
@@ -63,9 +83,14 @@ export default function SolutionPage() {
 
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.fromTo(labelRef.current,
+        tl.fromTo(backButtonRef.current,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.5, delay: 0.1 }
+        )
+        .fromTo(labelRef.current,
           { opacity: 0, x: -18 },
-          { opacity: 1, x: 0, duration: 0.55, delay: 0.2 }
+          { opacity: 1, x: 0, duration: 0.55, delay: 0.2 },
+          "-=0.2"
         )
         .fromTo(titleRef.current,
           { opacity: 0, y: 50, filter: "blur(8px)" },
@@ -130,6 +155,13 @@ export default function SolutionPage() {
     };
   }, [solution]);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+    }
+  }, [slug]);
+
   if (!solution) {
     return (
       <>
@@ -140,20 +172,22 @@ export default function SolutionPage() {
           <p className="sp-not-found-desc">
             The solution you're looking for doesn't exist or has been moved.
           </p>
-          <a href="/" className="sp-btn sp-btn--primary">Back to Home</a>
+          <button onClick={handleBack} className="sp-btn sp-btn--primary">Back to Solutions</button>
         </div>
         <Footer />
       </>
     );
   }
 
+  const videoUrl = solution.videoUrl || "/141056-776768318.mp4";
+
   return (
     <>
       <Navbar />
+      <ContactModal isOpen={isContactOpen} onClose={handleContactClose} />
 
       <main className="sp-root" ref={pageRef}>
 
- 
         <svg
           className="sp-bg-lines"
           viewBox="0 0 1440 900"
@@ -172,6 +206,15 @@ export default function SolutionPage() {
         </svg>
 
         <div className="sp-hero-wrapper layout-container">
+          <div className="sp-back-btn-wrapper">
+            <button className="sp-back-btn" ref={backButtonRef} onClick={handleBack}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              Back to Solutions
+            </button>
+          </div>
+
           <div className="sp-hero-grid">
             <div className="sp-hero-content">
               <div className="sp-label" ref={labelRef}>
@@ -192,10 +235,15 @@ export default function SolutionPage() {
 
             <div className="sp-hero-image" ref={imageRef}>
               <div className="sp-image-wrapper">
-                <img
-                  src={solution.image || "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80"}
-                  alt={solution.title}
-                  className="sp-main-image"
+                <video
+                  ref={videoRef}
+                  className="sp-main-video"
+                  src={videoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  key={slug}
                 />
                 <div className="sp-image-glow"></div>
               </div>
@@ -203,12 +251,10 @@ export default function SolutionPage() {
           </div>
         </div>
 
-      
         <div className="sp-divider layout-container">
           <div className="sp-divider-line" />
         </div>
 
-       
         <div className="sp-features-section layout-container">
 
           <div className="sp-section-header">
@@ -265,7 +311,6 @@ export default function SolutionPage() {
 
         </div>
 
-      
         <div className="sp-cta-wrap layout-container" ref={ctaRef}>
           <div className="sp-cta">
             <div className="sp-cta-glow" />
@@ -281,12 +326,12 @@ export default function SolutionPage() {
               built around your operational environment.
             </p>
             <div className="sp-cta-actions">
-              <a href="/contact" className="sp-btn sp-btn--primary">
+              <button onClick={handleContactOpen} className="sp-btn sp-btn--primary">
                 Contact Us
-              </a>
-              <a href="/#solutions" className="sp-btn sp-btn--ghost">
+              </button>
+              <button onClick={handleExploreAll} className="sp-btn sp-btn--ghost">
                 Explore All Solutions
-              </a>
+              </button>
             </div>
           </div>
         </div>
