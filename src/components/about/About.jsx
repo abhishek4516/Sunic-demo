@@ -9,22 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 const CAROUSEL_IMAGES = [
   {
     id: 1,
-    url: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/contocr.jpg",
     alt: "Modern IT infrastructure server room"
   },
   {
     id: 2,
-    url: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/Logistics_Supply_Chain.jpg",
     alt: "Tech team collaboration"
   },
   {
     id: 3,
-    url: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/servers.webp",
     alt: "Enterprise technology solutions"
   },
   {
     id: 4,
-    url: "https://images.pexels.com/photos/5468193/pexels-photo-5468193.jpeg?auto=compress&cs=tinysrgb&w=800",
+    url: "/network.jpg",
     alt: "Data center and cloud infrastructure"
   },
   {
