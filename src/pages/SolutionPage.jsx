@@ -6,7 +6,7 @@ import Footer from "../components/layout/Footer";
 import { solutions } from "../data/solutions";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactModal from "../components/Contact/ContactModal";
+import ContactModal from "../components/contact/ContactModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
