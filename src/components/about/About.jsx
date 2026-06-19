@@ -32,16 +32,140 @@ const CAROUSEL_IMAGES = [
     alt: "Network and system integration",
   },
 ];
+
 const INDUSTRIES = [
-  { icon: "🚢", title: "Ports, Logistics & Supply Chain" },
-  { icon: "🚂", title: "Rail & Transportation" },
-  { icon: "🤖", title: "Artificial Intelligence & Machine Learning" },
-  { icon: "🖥️", title: "Data Centers & Server Infrastructure" },
-  { icon: "🌐", title: "Enterprise Networking Solutions" },
-  { icon: "🔄", title: "Enterprise Integration & Middleware" },
-  { icon: "🏢", title: "Enterprise & Corporate Organizations" },
-  { icon: "🏛️", title: "Government & Public Sector" },
-  { icon: "📦", title: "Warehousing & Distribution Centers" },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+        <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" />
+        <path d="M7 10h2" />
+        <path d="M7 14h2" />
+        <path d="M15 10h2" />
+        <path d="M15 14h2" />
+      </svg>
+    ),
+    title: "Ports, Logistics & Supply Chain" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 12h18" />
+        <path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" />
+        <path d="M3 6h18" />
+        <path d="M7 9V6" />
+        <path d="M17 9V6" />
+        <path d="M12 9V6" />
+        <circle cx="7" cy="16" r="1.5" />
+        <circle cx="17" cy="16" r="1.5" />
+      </svg>
+    ),
+    title: "Rail & Transportation" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v4" />
+        <path d="M12 19v4" />
+        <path d="M1 12h4" />
+        <path d="M19 12h4" />
+        <path d="M4.22 4.22l2.83 2.83" />
+        <path d="M16.95 16.95l2.83 2.83" />
+        <path d="M4.22 19.78l2.83-2.83" />
+        <path d="M16.95 7.05l2.83-2.83" />
+        <circle cx="12" cy="12" r="8" strokeDasharray="2 2" />
+      </svg>
+    ),
+    title: "Artificial Intelligence & Machine Learning" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="2" y="6" width="20" height="12" rx="1" />
+        <path d="M8 10v4" />
+        <path d="M12 10v4" />
+        <path d="M16 10v4" />
+        <path d="M2 10h2" />
+        <path d="M20 10h2" />
+        <path d="M2 14h2" />
+        <path d="M20 14h2" />
+      </svg>
+    ),
+    title: "Data Centers & Server Infrastructure" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        <path d="M8 12h8" />
+        <path d="M12 8v8" />
+      </svg>
+    ),
+    title: "Enterprise Networking Solutions" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M4 4h16v16H4z" />
+        <path d="M9 4v16" />
+        <path d="M15 4v16" />
+        <path d="M4 9h16" />
+        <path d="M4 15h16" />
+        <circle cx="12" cy="12" r="2" />
+        <path d="M4 12h5" />
+        <path d="M15 12h5" />
+      </svg>
+    ),
+    title: "Enterprise Integration & Middleware" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M4 4h16v16H4z" />
+        <path d="M4 8h16" />
+        <path d="M4 16h16" />
+        <path d="M8 4v16" />
+        <path d="M16 4v16" />
+        <path d="M4 12h16" />
+        <circle cx="8" cy="8" r="1" />
+        <circle cx="16" cy="8" r="1" />
+        <circle cx="8" cy="16" r="1" />
+        <circle cx="16" cy="16" r="1" />
+      </svg>
+    ),
+    title: "Enterprise & Corporate Organizations" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+        <path d="M2 7v5" />
+        <path d="M22 7v5" />
+        <path d="M12 7v5" />
+      </svg>
+    ),
+    title: "Government & Public Sector" 
+  },
+  { 
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="2" y="6" width="20" height="12" rx="1" />
+        <path d="M6 10h4" />
+        <path d="M6 14h8" />
+        <path d="M14 10h4" />
+        <path d="M6 18v-4" />
+        <path d="M18 18v-4" />
+        <path d="M6 6V4" />
+        <path d="M18 6V4" />
+      </svg>
+    ),
+    title: "Warehousing & Distribution Centers" 
+  },
 ];
 
 const PARTNERS = ["Oracle", "Cisco", "Microsoft", "VMware", "Symantec"];
@@ -309,27 +433,37 @@ export default function About() {
             </div>
           ))}
         </div>
+
+        
         <div className="industries-section">
-  <div className="section-label">
-    <span className="label-line"></span>
-    Industries We Serve
-  </div>
+          <div className="section-label">
+            <span className="label-line"></span>
+            Industries We Serve
+          </div>
 
-  <h2 className="industries-title">
-    Delivering Technology Across
-    <br />
-    <em>Critical Industries</em>
-  </h2>
+          <h2 className="industries-title">
+            Delivering Technology Across
+            <br />
+            <em>Critical Industries</em>
+          </h2>
 
-  <div className="industries-grid">
-    {INDUSTRIES.map((industry) => (
-      <div className="industry-card" key={industry.title}>
-        <div className="industry-icon">{industry.icon}</div>
-        <h3>{industry.title}</h3>
-      </div>
-    ))}
-  </div>
-</div>
+          <div className="industries-grid">
+            {INDUSTRIES.map((industry, index) => (
+              <div className="industry-card" key={index}>
+                <div className="industry-icon-wrapper">
+                  <div className="industry-icon-ring">
+                    {industry.icon}
+                  </div>
+                </div>
+                <h3 className="industry-card-title">{industry.title}</h3>
+                <div className="industry-card-line"></div>
+                <span className="industry-card-number">
+                  {(index + 1).toString().padStart(2, '0')}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
