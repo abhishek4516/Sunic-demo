@@ -1,7 +1,7 @@
 .logoloop-section {
   width: 100%;
   background: var(--bg, #ffffff);
-  padding: 80px 0;
+ 
   overflow: hidden;
   position: relative;
   transition: background 0.3s ease;

@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap");
 
 .eco-section {
-  position: relative;
-  overflow: hidden;
-  padding: 140px 0;
-  background: var(--bg, #FFFFFF);
-  font-family: "DM Sans", sans-serif;
-  transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    background: var(--bg, #FFFFFF);
+    font-family: "DM Sans", sans-serif;
+    transition: background 0.3s ease;
 }
-
 [data-theme="dark"] .eco-section {
   background: var(--bg, #0a0a0a);
 }
@@ -615,7 +614,7 @@
 
 @media (max-width: 640px) {
   .eco-section {
-    padding: 100px 0;
+    padding: 10px 0;
   }
   
   .layout-container {

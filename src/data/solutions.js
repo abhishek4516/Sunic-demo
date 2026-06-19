@@ -1,4 +1,4 @@
-import datastorage from "../assets/datastorage.png";
+// import datastorage from "../assets/datastorage.png";
 
 export const solutions = {
   "rake-number-ocr": {
