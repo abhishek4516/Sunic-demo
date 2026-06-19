@@ -36,8 +36,9 @@ const CAROUSEL_IMAGES = [
 const INDUSTRIES = [
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M5 21V7l7-4 7 4v14" />
         <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" />
         <path d="M7 10h2" />
         <path d="M7 14h2" />
@@ -49,7 +50,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 12h18" />
         <path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" />
         <path d="M3 6h18" />
@@ -64,7 +65,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
         <path d="M12 1v4" />
         <path d="M12 19v4" />
@@ -81,7 +82,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="1" />
         <path d="M8 10v4" />
         <path d="M12 10v4" />
@@ -96,7 +97,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <path d="M2 12h20" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -108,7 +109,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16v16H4z" />
         <path d="M9 4v16" />
         <path d="M15 4v16" />
@@ -123,7 +124,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16v16H4z" />
         <path d="M4 8h16" />
         <path d="M4 16h16" />
@@ -140,7 +141,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
         <path d="M2 17l10 5 10-5" />
         <path d="M2 12l10 5 10-5" />
@@ -153,7 +154,7 @@ const INDUSTRIES = [
   },
   { 
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="1" />
         <path d="M6 10h4" />
         <path d="M6 14h8" />
@@ -327,7 +328,6 @@ export default function About() {
 
       <div className="layout-container">
         <div className="about-grid">
-          {/* Left: heading + description */}
           <div className="about-content">
             <div className="section-label" ref={labelRef}>
               <span className="label-line"></span>
@@ -366,7 +366,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: carousel, square corners */}
           <div
             className="about-carousel-wrap"
             ref={carouselRef}
@@ -419,7 +418,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Full-width animated stats strip */}
         <div className="about-stats-strip" ref={statsStripRef}>
           {STATS.map((stat, i) => (
             <div className="stat-block" key={stat.id}>
@@ -434,34 +432,45 @@ export default function About() {
           ))}
         </div>
 
-        
         <div className="industries-section">
-          <div className="section-label">
-            <span className="label-line"></span>
-            Industries We Serve
+          <div className="industries-header">
+            <div className="section-label">
+              <span className="label-line"></span>
+              Industries We Serve
+            </div>
+            <h2 className="industries-title">
+              Delivering Technology Across
+              <br />
+              <em>Critical Industries</em>
+            </h2>
           </div>
 
-          <h2 className="industries-title">
-            Delivering Technology Across
-            <br />
-            <em>Critical Industries</em>
-          </h2>
+          <div className="industries-statement">
+            <div className="statement-badge">[ OUR EXPERTISE ]</div>
+            <h3 className="statement-main">
+              Enterprise infrastructure solutions
+              <br />
+              <span className="statement-highlight">for the industries that move the world.</span>
+            </h3>
 
-          <div className="industries-grid">
-            {INDUSTRIES.map((industry, index) => (
-              <div className="industry-card" key={index}>
-                <div className="industry-icon-wrapper">
-                  <div className="industry-icon-ring">
+            <div className="statement-industries">
+              {INDUSTRIES.map((industry, index) => (
+                <div key={index} className="industry-item">
+                  <div className="industry-icon-wrapper">
                     {industry.icon}
                   </div>
+                  <span className="industry-name">{industry.title}</span>
                 </div>
-                <h3 className="industry-card-title">{industry.title}</h3>
-                <div className="industry-card-line"></div>
-                <span className="industry-card-number">
-                  {(index + 1).toString().padStart(2, '0')}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <div className="statement-footer">
+              <span className="footer-text">
+                From ports to data centers, rail to government — we deliver integrated enterprise solutions 
+                that power critical infrastructure across every sector.
+              </span>
+            
+            </div>
           </div>
         </div>
       </div>
